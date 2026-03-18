@@ -1,0 +1,299 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Phone, DollarSign, Calendar } from 'lucide-react';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import CategorySidebar from '../components/CategorySidebar';
+import { distributors, testimonials, blogPosts, videoTestimonials } from '../data/mockData';
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
+import { Label } from '../components/ui/label';
+
+const Home = () => {
+  const [lookingFor, setLookingFor] = useState('distributor');
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-white to-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-12 gap-8">
+            {/* Left Sidebar - Categories */}
+            <div className="col-span-3">
+              <CategorySidebar />
+            </div>
+
+            {/* Center - Hero Content */}
+            <div className="col-span-6 text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                The Launchpad for Your Business
+                <br />
+                <span className="text-[#2C3E95]">Expansion and Entrepreneurial Success!</span>
+              </h1>
+              
+              {/* Hero Image with Brands */}
+              <div className="relative my-8">
+                <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-[#4C3F91] to-[#2C3E95] flex items-center justify-center overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                    alt="Business professional"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Brand Logos Circle */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-8">
+                  <div className="bg-white rounded-full px-8 py-4 shadow-lg">
+                    <p className="text-sm font-semibold text-gray-900">Exclusive Brands</p>
+                    <p className="text-xs text-gray-600">Top Industry Players Trust GetDistributors</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Sidebar - What are you looking for */}
+            <div className="col-span-3">
+              <Card className="shadow-lg">
+                <CardContent className="p-6">
+                  <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
+                  <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
+                  
+                  <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-3 mb-6">
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="distributor" id="distributor" />
+                      <Label htmlFor="distributor" className="cursor-pointer">Distributor</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="franchise" id="franchise" />
+                      <Label htmlFor="franchise" className="cursor-pointer">Franchise</Label>
+                    </div>
+                  </RadioGroup>
+
+                  <Link to="/distributors">
+                    <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-4">
+                      Looking for Distributors
+                    </Button>
+                  </Link>
+
+                  <div className="text-center pt-4 border-t">
+                    <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
+                      <p className="text-sm font-semibold text-gray-900 mb-2">Supercharge Your Business Growth</p>
+                      <p className="text-xs text-gray-600">Unlock Limitless Opportunities!</p>
+                    </div>
+                    <Link to="/post-requirement">
+                      <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full">
+                        Post Your Requirement
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Stats Card */}
+              <Card className="mt-4 shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <p className="text-sm text-gray-600 mb-2">ALL CATEGORIES</p>
+                  <h2 className="text-3xl font-bold text-[#2C3E95]">Total 1.2 Lakh</h2>
+                  <p className="text-lg font-semibold text-gray-900">Distributors</p>
+                  <div className="flex justify-center gap-1 mt-4">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Distributorship Opportunities */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Featured Distributorship Opportunities
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {distributors.map((distributor) => (
+              <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <img
+                      src={distributor.logo}
+                      alt={distributor.name}
+                      className="w-16 h-16 rounded object-cover"
+                    />
+                    <div className="flex-1">
+                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 mb-2">
+                        {distributor.category}
+                      </Badge>
+                      <Link to={`/distributor/${distributor.id}`}>
+                        <h3 className="font-bold text-lg hover:text-[#2C3E95] transition">
+                          {distributor.name}
+                        </h3>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center gap-2 text-sm">
+                      <DollarSign className="w-4 h-4 text-green-600" />
+                      <span className="text-gray-600">Investment:</span>
+                      <span className="font-semibold text-gray-900">{distributor.investmentRange}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="w-4 h-4 text-blue-600" />
+                      <span className="text-gray-600">Established:</span>
+                      <span className="font-semibold text-gray-900">{distributor.established}</span>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-xs text-gray-600 mb-2">Distributors of:</p>
+                    <p className="text-sm text-gray-800 line-clamp-2">{distributor.products.join(', ')}</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <a href={`tel:${distributor.phone}`} className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        <Phone className="w-4 h-4 mr-2" />
+                        Call
+                      </Button>
+                    </a>
+                    <Link to={`/distributor/${distributor.id}`} className="flex-1">
+                      <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b]">
+                        View Details
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/distributors">
+              <Button size="lg" className="bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full px-8">
+                View More Opportunities
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories/Testimonials */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+            <p className="text-lg text-gray-600">Our clients' testimonials speak volumes of satisfaction</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} className="hover:shadow-xl transition">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+                    <div>
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-600">{testimonial.designation}</p>
+                      <p className="text-xs text-gray-500">{testimonial.company}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-700 italic">"{testimonial.testimonial}"</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonials */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Video Testimonials</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {videoTestimonials.map((video) => (
+              <div key={video.id} className="group cursor-pointer">
+                <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                  <img
+                    src={video.thumbnail}
+                    alt="Video testimonial"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-50 transition">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition">
+                      <div className="w-0 h-0 border-l-8 border-t-4 border-b-4 border-transparent border-l-red-600 ml-1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
+            <p className="text-lg text-gray-600">Explore Insider Tips, Expert Guidance, Success Stories, & Industry Insights</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {blogPosts.map((post) => (
+              <Card key={post.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-48 object-cover"
+                />
+                <CardContent className="p-6">
+                  <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100 mb-3">
+                    {post.category}
+                  </Badge>
+                  <Link to={`/blog/${post.id}`}>
+                    <h3 className="font-bold text-lg mb-3 hover:text-[#2C3E95] transition line-clamp-2">
+                      {post.title}
+                    </h3>
+                  </Link>
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span>{post.date}</span>
+                    <span>{post.author}</span>
+                  </div>
+                  <Link to={`/blog/${post.id}`}>
+                    <Button variant="link" className="p-0 h-auto mt-4 text-[#2C3E95]">
+                      Read More →
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link to="/blog">
+              <Button size="lg" className="bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full px-8">
+                View All Posts
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
