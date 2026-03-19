@@ -1,16 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, DollarSign, Calendar } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import CategorySidebar from '../components/CategorySidebar';
-import { distributors, testimonials, blogPosts, videoTestimonials } from '../data/mockData';
+import { videoTestimonials } from '../data/mockData';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
+import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
 
 const Home = () => {
   const [lookingFor, setLookingFor] = useState('distributor');
+  const [distributors, setDistributors] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [distRes, testRes, blogRes] = await Promise.all([
+          distributorsAPI.getFeatured(),
+          testimonialsAPI.getFeatured(),
+          blogAPI.getPosts({ limit: 3 })
+        ]);
+        
+        setDistributors(distRes.data);
+        setTestimonials(testRes.data);
+        setBlogPosts(blogRes.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#2C3E95] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

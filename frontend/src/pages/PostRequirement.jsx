@@ -6,6 +6,7 @@ import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { useToast } from '../hooks/use-toast';
+import { requirementsAPI, categoriesAPI } from '../services/api';
 import { categories } from '../data/mockData';
 
 const PostRequirement = () => {
@@ -23,26 +24,44 @@ const PostRequirement = () => {
     territories: '',
     description: ''
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: 'Requirement Posted Successfully!',
-      description: 'We will connect you with relevant distributors shortly.',
-    });
-    setFormData({
-      businessType: '',
-      category: '',
-      productName: '',
-      companyName: '',
-      contactPerson: '',
-      email: '',
-      phone: '',
-      location: '',
-      investment: '',
-      territories: '',
-      description: ''
-    });
+    setSubmitting(true);
+    
+    try {
+      await requirementsAPI.create(formData);
+      
+      toast({
+        title: 'Requirement Posted Successfully!',
+        description: 'We will connect you with relevant distributors shortly.',
+      });
+      
+      // Reset form
+      setFormData({
+        businessType: '',
+        category: '',
+        productName: '',
+        companyName: '',
+        contactPerson: '',
+        email: '',
+        phone: '',
+        location: '',
+        investment: '',
+        territories: '',
+        description: ''
+      });
+    } catch (error) {
+      console.error('Error submitting requirement:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to submit requirement. Please try again.',
+        variant: 'destructive'
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -228,8 +247,13 @@ const PostRequirement = () => {
 
                 {/* Submit Button */}
                 <div className="flex gap-4">
-                  <Button type="submit" size="lg" className="flex-1 bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full">
-                    Submit Requirement
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="flex-1 bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full"
+                    disabled={submitting}
+                  >
+                    {submitting ? 'Submitting...' : 'Submit Requirement'}
                   </Button>
                   <Button type="button" variant="outline" size="lg" className="rounded-full px-8">
                     Reset

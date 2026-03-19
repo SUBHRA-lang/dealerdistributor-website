@@ -1,16 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, DollarSign, Calendar, ArrowLeft, Package } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { distributors } from '../data/mockData';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { distributorsAPI } from '../services/api';
 
 const DistributorDetail = () => {
   const { id } = useParams();
-  const distributor = distributors.find(d => d.id === parseInt(id));
+  const [distributor, setDistributor] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    const fetchDistributor = async () => {
+      try {
+        const res = await distributorsAPI.getById(id);
+        setDistributor(res.data);
+      } catch (error) {
+        console.error('Error fetching distributor:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDistributor();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#2C3E95] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!distributor) {
     return (
@@ -152,13 +178,15 @@ const DistributorDetail = () => {
                     </div>
                   </a>
                   
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                    <Mail className="w-5 h-5 text-blue-700" />
-                    <div>
-                      <p className="text-xs text-gray-600">Email</p>
-                      <p className="font-semibold text-blue-700">info@{distributor.name.toLowerCase().replace(/\s+/g, '')}.com</p>
+                  {distributor.email && (
+                    <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                      <Mail className="w-5 h-5 text-blue-700" />
+                      <div>
+                        <p className="text-xs text-gray-600">Email</p>
+                        <p className="font-semibold text-blue-700 text-sm break-all">{distributor.email}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
                     <MapPin className="w-5 h-5 text-purple-700" />

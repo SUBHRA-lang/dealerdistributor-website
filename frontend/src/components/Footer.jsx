@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { useToast } from '../hooks/use-toast';
+import { newsletterAPI } from '../services/api';
 
 const Footer = () => {
-  const handleSubscribe = (e) => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    alert('Thank you for subscribing!');
+    setSubmitting(true);
+    
+    try {
+      await newsletterAPI.subscribe(email);
+      
+      toast({
+        title: 'Subscribed!',
+        description: 'Thank you for subscribing to our newsletter.',
+      });
+      
+      setEmail('');
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to subscribe. Please try again.',
+        variant: 'destructive'
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -22,11 +48,17 @@ const Footer = () => {
               <Input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-white text-gray-900 flex-1"
                 required
               />
-              <Button type="submit" className="bg-[#FF6B2C] hover:bg-[#e55a1f]">
-                Subscribe
+              <Button 
+                type="submit" 
+                className="bg-[#FF6B2C] hover:bg-[#e55a1f]"
+                disabled={submitting}
+              >
+                {submitting ? 'Subscribing...' : 'Subscribe'}
               </Button>
             </form>
           </div>

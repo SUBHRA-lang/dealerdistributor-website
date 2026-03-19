@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
-import { blogPosts } from '../data/mockData';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import { blogAPI } from '../services/api';
 
 const Blog = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        const res = await blogAPI.getPosts({ limit: 10 });
+        setBlogPosts(res.data);
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#2C3E95] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const featuredPost = blogPosts[0];
+  const otherPosts = blogPosts.slice(1);
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
@@ -19,41 +50,43 @@ const Blog = () => {
         </div>
 
         {/* Featured Post */}
-        <Card className="mb-12 overflow-hidden hover:shadow-xl transition">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <img
-              src={blogPosts[0].image}
-              alt={blogPosts[0].title}
-              className="w-full h-full object-cover"
-            />
-            <CardContent className="p-8 flex flex-col justify-center">
-              <Badge className="w-fit bg-yellow-100 text-yellow-800 hover:bg-yellow-100 mb-4">
-                Featured Post
-              </Badge>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{blogPosts[0].title}</h2>
-              <p className="text-gray-600 mb-6">{blogPosts[0].excerpt}</p>
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{blogPosts[0].date}</span>
+        {featuredPost && (
+          <Card className="mb-12 overflow-hidden hover:shadow-xl transition">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <img
+                src={featuredPost.image}
+                alt={featuredPost.title}
+                className="w-full h-full object-cover"
+              />
+              <CardContent className="p-8 flex flex-col justify-center">
+                <Badge className="w-fit bg-yellow-100 text-yellow-800 hover:bg-yellow-100 mb-4">
+                  Featured Post
+                </Badge>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">{featuredPost.title}</h2>
+                <p className="text-gray-600 mb-6">{featuredPost.excerpt}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    <span>{featuredPost.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    <span>{featuredPost.author}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  <span>{blogPosts[0].author}</span>
-                </div>
-              </div>
-              <Link to={`/blog/${blogPosts[0].id}`}>
-                <Button className="bg-[#2C3E95] hover:bg-[#1f2d6b]">
-                  Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </CardContent>
-          </div>
-        </Card>
+                <Link to={`/blog/${featuredPost.id}`}>
+                  <Button className="bg-[#2C3E95] hover:bg-[#1f2d6b]">
+                    Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </div>
+          </Card>
+        )}
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {otherPosts.map((post) => (
             <Card key={post.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <img
                 src={post.image}

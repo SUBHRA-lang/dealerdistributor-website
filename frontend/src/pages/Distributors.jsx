@@ -1,21 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Phone, DollarSign, Calendar, Filter } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { distributors, categories } from '../data/mockData';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { distributorsAPI, categoriesAPI } from '../services/api';
 
 const Distributors = () => {
   const [searchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
+  const [distributors, setDistributors] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Filter distributors based on category
-  const filteredDistributors = selectedCategory === 'all'
-    ? distributors
-    : distributors.filter(d => d.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await categoriesAPI.getAll();
+        setCategories(res.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchDistributors = async () => {
+      setLoading(true);
+      try {
+        const params = {};
+        if (selectedCategory !== 'all') {
+          params.category = selectedCategory;
+        }
+        const res = await distributorsAPI.getAll(params);
+        setDistributors(res.data);
+      } catch (error) {
+        console.error('Error fetching distributors:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDistributors();
+  }, [selectedCategory]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#2C3E95] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading distributors...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -56,7 +96,7 @@ const Distributors = () => {
                   </SelectContent>
                 </Select>
 
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full" onClick={() => setSelectedCategory('all')}>
                   Reset Filters
                 </Button>
               </div>
@@ -67,13 +107,13 @@ const Distributors = () => {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-gray-600">
-            Showing <span className="font-semibold text-gray-900">{filteredDistributors.length}</span> opportunities
+            Showing <span className="font-semibold text-gray-900">{distributors.length}</span> opportunities
           </p>
         </div>
 
         {/* Distributors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredDistributors.map((distributor) => (
+          {distributors.map((distributor) => (
             <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4 mb-4">
