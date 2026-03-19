@@ -106,9 +106,9 @@ const Home = () => {
                     </div>
                   </RadioGroup>
 
-                  <Link to="/distributors">
+                  <Link to={lookingFor === 'franchise' ? '/franchises' : '/distributors'}>
                     <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-4">
-                      Looking for Distributors
+                      {lookingFor === 'franchise' ? 'Looking for Franchises' : 'Looking for Distributors'}
                     </Button>
                   </Link>
 
@@ -262,18 +262,16 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {videoTestimonials.map((video) => (
-              <div key={video.id} className="group cursor-pointer">
-                <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
-                  <img
-                    src={video.thumbnail}
-                    alt="Video testimonial"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              <div key={video.id} className="group">
+                <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition" style={{ paddingTop: '56.25%' }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                    title={`Video Testimonial ${video.id}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-50 transition">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition">
-                      <div className="w-0 h-0 border-l-8 border-t-4 border-b-4 border-transparent border-l-red-600 ml-1" />
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}

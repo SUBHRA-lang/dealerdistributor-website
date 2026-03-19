@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useParams } from 'react-router-dom';
 import { Phone, DollarSign, Calendar, Filter } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -9,9 +9,11 @@ import { distributorsAPI, categoriesAPI } from '../services/api';
 
 const Distributors = () => {
   const [searchParams] = useSearchParams();
+  const { slug } = useParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
   const [distributors, setDistributors] = useState([]);
+  const [allDistributors, setAllDistributors] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,11 +33,8 @@ const Distributors = () => {
     const fetchDistributors = async () => {
       setLoading(true);
       try {
-        const params = {};
-        if (selectedCategory !== 'all') {
-          params.category = selectedCategory;
-        }
-        const res = await distributorsAPI.getAll(params);
+        const res = await distributorsAPI.getAll({});
+        setAllDistributors(res.data);
         setDistributors(res.data);
       } catch (error) {
         console.error('Error fetching distributors:', error);
@@ -44,7 +43,59 @@ const Distributors = () => {
       }
     };
     fetchDistributors();
-  }, [selectedCategory]);
+  }, []);
+
+  // Apply filters and sorting
+  useEffect(() => {
+    let filtered = [...allDistributors];
+
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(d => 
+        d.category.toLowerCase().includes(selectedCategory.toLowerCase())
+      );
+    }
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'newest':
+        // Keep default order (newest first)
+        break;
+      case 'investment-low':
+        filtered.sort((a, b) => {
+          const getMinInvestment = (range) => {
+            const match = range.match(/₹\s*(\d+)/);
+            return match ? parseInt(match[1]) : 0;
+          };
+          return getMinInvestment(a.investmentRange) - getMinInvestment(b.investmentRange);
+        });
+        break;
+      case 'investment-high':
+        filtered.sort((a, b) => {
+          const getMaxInvestment = (range) => {
+            const matches = range.match(/₹\s*(\d+)/g);
+            if (matches && matches.length > 1) {
+              return parseInt(matches[1].replace('₹', '').trim());
+            }
+            return parseInt(matches ? matches[0].replace('₹', '').trim() : 0);
+          };
+          return getMaxInvestment(b.investmentRange) - getMaxInvestment(a.investmentRange);
+        });
+        break;
+      case 'established':
+        filtered.sort((a, b) => a.established - b.established);
+        break;
+      default:
+        break;
+    }
+
+    setDistributors(filtered);
+  }, [selectedCategory, sortBy, allDistributors]);
+
+  const handleReset = () => {
+    setSelectedCategory('all');
+    setSortBy('newest');
+  };
 
   if (loading) {
     return (
@@ -96,7 +147,7 @@ const Distributors = () => {
                   </SelectContent>
                 </Select>
 
-                <Button variant="outline" className="w-full" onClick={() => setSelectedCategory('all')}>
+                <Button variant="outline" className="w-full" onClick={handleReset}>
                   Reset Filters
                 </Button>
               </div>
@@ -108,67 +159,75 @@ const Distributors = () => {
         <div className="mb-6">
           <p className="text-gray-600">
             Showing <span className="font-semibold text-gray-900">{distributors.length}</span> opportunities
+            {selectedCategory !== 'all' && <span> in <span className="font-semibold">{selectedCategory}</span></span>}
           </p>
         </div>
 
         {/* Distributors Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {distributors.map((distributor) => (
-            <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <img
-                    src={distributor.logo}
-                    alt={distributor.name}
-                    className="w-16 h-16 rounded object-cover"
-                  />
-                  <div className="flex-1">
-                    <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 mb-2">
-                      {distributor.category}
-                    </Badge>
-                    <Link to={`/distributor/${distributor.id}`}>
-                      <h3 className="font-bold text-lg hover:text-[#2C3E95] transition">
-                        {distributor.name}
-                      </h3>
+        {distributors.length === 0 ? (
+          <Card className="p-12 text-center">
+            <p className="text-gray-600 text-lg">No distributors found matching your criteria.</p>
+            <Button onClick={handleReset} className="mt-4">Reset Filters</Button>
+          </Card>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {distributors.map((distributor) => (
+              <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <img
+                      src={distributor.logo}
+                      alt={distributor.name}
+                      className="w-16 h-16 rounded object-cover"
+                    />
+                    <div className="flex-1">
+                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 mb-2">
+                        {distributor.category}
+                      </Badge>
+                      <Link to={`/distributor/${distributor.id}`}>
+                        <h3 className="font-bold text-lg hover:text-[#2C3E95] transition">
+                          {distributor.name}
+                        </h3>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center gap-2 text-sm">
+                      <DollarSign className="w-4 h-4 text-green-600" />
+                      <span className="text-gray-600">Investment:</span>
+                      <span className="font-semibold text-gray-900">{distributor.investmentRange}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="w-4 h-4 text-blue-600" />
+                      <span className="text-gray-600">Established:</span>
+                      <span className="font-semibold text-gray-900">{distributor.established}</span>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-xs text-gray-600 mb-2">Distributors of:</p>
+                    <p className="text-sm text-gray-800 line-clamp-2">{distributor.products.join(', ')}</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <a href={`tel:${distributor.phone}`} className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        <Phone className="w-4 h-4 mr-2" />
+                        Call
+                      </Button>
+                    </a>
+                    <Link to={`/distributor/${distributor.id}`} className="flex-1">
+                      <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b]">
+                        View Details
+                      </Button>
                     </Link>
                   </div>
-                </div>
-
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <DollarSign className="w-4 h-4 text-green-600" />
-                    <span className="text-gray-600">Investment:</span>
-                    <span className="font-semibold text-gray-900">{distributor.investmentRange}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Calendar className="w-4 h-4 text-blue-600" />
-                    <span className="text-gray-600">Established:</span>
-                    <span className="font-semibold text-gray-900">{distributor.established}</span>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-xs text-gray-600 mb-2">Distributors of:</p>
-                  <p className="text-sm text-gray-800 line-clamp-2">{distributor.products.join(', ')}</p>
-                </div>
-
-                <div className="flex gap-2">
-                  <a href={`tel:${distributor.phone}`} className="flex-1">
-                    <Button variant="outline" className="w-full">
-                      <Phone className="w-4 h-4 mr-2" />
-                      Call
-                    </Button>
-                  </a>
-                  <Link to={`/distributor/${distributor.id}`} className="flex-1">
-                    <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b]">
-                      View Details
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
 
         {/* CTA Section */}
         <Card className="mt-12 bg-gradient-to-r from-[#2C3E95] to-[#4C3F91] text-white">
