@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import CategorySidebar from '../components/CategorySidebar';
-import { videoTestimonials } from '../data/mockData';
+import { videoTestimonials, distributors as mockDistributors, testimonials as mockTestimonials, blogPosts as mockBlogPosts } from '../data/mockData';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
@@ -31,6 +31,10 @@ const Home = () => {
         setBlogPosts(blogRes.data);
       } catch (error) {
         console.error('Error fetching data:', error);
+        // Fallback to mock data when API is unavailable
+        setDistributors(mockDistributors);
+        setTestimonials(mockTestimonials);
+        setBlogPosts(mockBlogPosts);
       } finally {
         setLoading(false);
       }
