@@ -110,7 +110,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>GetDistributors.com - An ideal platform for anybody who is looking forward to Appointing or Becoming a Distributor, Franchisee and Sales Agent.</p>
+          <p>DealerDistributors.com - An ideal platform for anybody who is looking forward to Appointing or Becoming a Distributor, Franchisee and Sales Agent.</p>
           <p className="mt-2">© 2025 Infocom Network Private Limited. All rights reserved.</p>
         </div>
       </div>

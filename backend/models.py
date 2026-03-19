@@ -89,7 +89,7 @@ class BlogPost(BaseModel):
     content: str
     image: str
     category: str
-    author: str = "GetDistributors Team"
+    author: str = "DealerDistributors Team"
     published_date: datetime = Field(default_factory=datetime.utcnow)
     is_published: bool = True
     created_at: datetime = Field(default_factory=datetime.utcnow)

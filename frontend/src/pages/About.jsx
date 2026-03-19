@@ -9,7 +9,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-[#2C3E95] to-[#4C3F91] text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About GetDistributors.com</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">About DealerDistributors.com</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
             India's Leading B2B Platform Connecting Manufacturers, Distributors, and Franchisees
           </p>
@@ -24,7 +24,7 @@ const About = () => {
               <CardContent className="p-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Mission</h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  GetDistributors.com is dedicated to bridging the gap between manufacturers seeking to expand their distribution networks and entrepreneurs looking for profitable business opportunities. We provide a comprehensive platform that simplifies the process of finding, connecting, and partnering with the right business associates.
+                  DealerDistributors.com is dedicated to bridging the gap between manufacturers seeking to expand their distribution networks and entrepreneurs looking for profitable business opportunities. We provide a comprehensive platform that simplifies the process of finding, connecting, and partnering with the right business associates.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   With over 1.2 lakh distributors registered on our platform, we've become India's most trusted marketplace for distributorship and franchise opportunities across all major industries.

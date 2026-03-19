@@ -23,7 +23,7 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 # Create the main app without a prefix
-app = FastAPI(title="GetDistributors API")
+app = FastAPI(title="DealerDistributors API")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -325,7 +325,7 @@ async def subscribe_newsletter(subscription: NewsletterSubscribe):
 @api_router.get("/")
 async def root():
     return {
-        "message": "GetDistributors API is running",
+        "message": "DealerDistributors API is running",
         "version": "1.0.0",
         "status": "healthy"
     }

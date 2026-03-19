@@ -1,4 +1,4 @@
-# GetDistributors.com - Full-Stack Clone
+# DealerDistributors.com - Full-Stack Clone
 
 ## 🎉 Complete Full-Stack B2B Platform
 
@@ -318,4 +318,4 @@ For any questions about the code or implementation:
 
 ---
 
-**Built with ❤️ - A complete GetDistributors.com clone**
+**Built with ❤️ - A complete DealerDistributors.com platform**
