@@ -6,6 +6,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { distributorsAPI, categoriesAPI } from '../services/api';
+import { distributors as mockDistributors, categories as mockCategories } from '../data/mockData';
 
 const Distributors = () => {
   const [searchParams] = useSearchParams();
@@ -24,6 +25,7 @@ const Distributors = () => {
         setCategories(res.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
+        setCategories(mockCategories);
       }
     };
     fetchCategories();
@@ -38,6 +40,8 @@ const Distributors = () => {
         setDistributors(res.data);
       } catch (error) {
         console.error('Error fetching distributors:', error);
+        setAllDistributors(mockDistributors);
+        setDistributors(mockDistributors);
       } finally {
         setLoading(false);
       }

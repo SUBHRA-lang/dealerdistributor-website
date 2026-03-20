@@ -1,0 +1,34 @@
+# ============================================================
+# .htaccess for public_html/api/ folder
+#
+# This file maps clean URL patterns (FastAPI-style) to PHP files.
+# It lets React call /api/distributors instead of /api/distributors.php
+# ============================================================
+
+Options -Indexes
+RewriteEngine On
+
+# ── Categories
+RewriteRule ^categories/?$                  categories.php   [L,QSA]
+RewriteRule ^categories/([^/]+)/?$          categories.php?slug=$1 [L,QSA]
+
+# ── Distributors (order matters — featured before :id)
+RewriteRule ^distributors/featured/?$       distributors.php?featured=1 [L,QSA]
+RewriteRule ^distributors/([0-9]+)/?$       distributors.php?id=$1      [L,QSA]
+RewriteRule ^distributors/?$                distributors.php             [L,QSA]
+
+# ── Blog
+RewriteRule ^blog/posts/([0-9]+)/?$         blog.php?id=$1  [L,QSA]
+RewriteRule ^blog/posts/?$                  blog.php        [L,QSA]
+
+# ── Testimonials
+RewriteRule ^testimonials/featured/?$       testimonials.php?featured=1 [L,QSA]
+RewriteRule ^testimonials/?$               testimonials.php             [L,QSA]
+
+# ── POST-only endpoints
+RewriteRule ^requirements/?$                requirements.php    [L,QSA]
+RewriteRule ^contact/?$                     contact.php         [L,QSA]
+RewriteRule ^newsletter/subscribe/?$        newsletter.php      [L,QSA]
+
+# ── Health check
+RewriteRule ^/?$                            index.php           [L,QSA]

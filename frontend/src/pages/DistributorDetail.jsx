@@ -6,6 +6,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { distributorsAPI } from '../services/api';
+import { distributors as mockDistributors } from '../data/mockData';
 
 const DistributorDetail = () => {
   const { id } = useParams();
@@ -20,6 +21,10 @@ const DistributorDetail = () => {
         setDistributor(res.data);
       } catch (error) {
         console.error('Error fetching distributor:', error);
+        const mockDistributor = mockDistributors.find(d => d.id === parseInt(id));
+        if (mockDistributor) {
+          setDistributor(mockDistributor);
+        }
       } finally {
         setLoading(false);
       }
