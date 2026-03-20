@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { categories } from '../data/mockData';
+import { categories } from '../data/mock-data';
 import * as LucideIcons from 'lucide-react';
 import { Button } from './ui/button';
 import { categoriesAPI } from '../services/api';

@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-import { categories } from '../data/mockData';
+import { categories } from '../data/mock-data';
 
 const Header = () => {
   const navigate = useNavigate();

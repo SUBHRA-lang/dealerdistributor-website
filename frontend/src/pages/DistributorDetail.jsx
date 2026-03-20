@@ -6,7 +6,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { distributorsAPI } from '../services/api';
-import { distributors as mockDistributors } from '../data/mockData';
+import { distributors as mockDistributors } from '../data/mock-data';
 
 const DistributorDetail = () => {
   const { id } = useParams();

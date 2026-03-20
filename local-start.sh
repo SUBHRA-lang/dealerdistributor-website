@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# local_start.sh — Start Local PHP/MySQL Dev Environment
+# local-start.sh — Start Local PHP/MySQL Dev Environment
 # ============================================================
 
 echo "🚀 Starting Local PHP/MySQL Dev Environment..."
@@ -18,7 +18,7 @@ DB_EXISTS=$(mysql -u root -e "SHOW DATABASES LIKE 'dealerdistributors';" | grep 
 if [ -z "$DB_EXISTS" ]; then
     echo "🗄️ Database missing. Creating and importing data..."
     mysql -u root -e "CREATE DATABASE dealerdistributors;"
-    mysql -u root dealerdistributors < php-backend/full_site_data.sql
+    mysql -u root dealerdistributors < php-backend/full-site-data.sql
 fi
 
 # 3. Start PHP Server

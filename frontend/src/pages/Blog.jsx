@@ -5,7 +5,7 @@ import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { blogAPI } from '../services/api';
-import { blogPosts as mockBlogPosts } from '../data/mockData';
+import { blogPosts as mockBlogPosts } from '../data/mock-data';
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState([]);

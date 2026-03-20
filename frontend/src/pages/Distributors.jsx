@@ -6,7 +6,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { distributorsAPI, categoriesAPI } from '../services/api';
-import { distributors as mockDistributors, categories as mockCategories } from '../data/mockData';
+import { distributors as mockDistributors, categories as mockCategories } from '../data/mock-data';
 
 const Distributors = () => {
   const [searchParams] = useSearchParams();

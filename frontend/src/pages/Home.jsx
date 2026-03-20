@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import CategorySidebar from '../components/CategorySidebar';
-import { videoTestimonials, distributors as mockDistributors, testimonials as mockTestimonials, blogPosts as mockBlogPosts } from '../data/mockData';
+import { videoTestimonials, distributors as mockDistributors, testimonials as mockTestimonials, blogPosts as mockBlogPosts } from '../data/mock-data';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
