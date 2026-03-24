@@ -9,6 +9,7 @@ import { videoTestimonials, distributors as mockDistributors, testimonials as mo
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
+import HomeSlider from '../components/HomeSlider';
 
 const Home = () => {
   const [lookingFor, setLookingFor] = useState('distributor');
@@ -145,6 +146,13 @@ const Home = () => {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+      
+      {/* Banner Slider Section */}
+      <section className="py-8 bg-white">
+        <div className="container mx-auto px-4">
+          <HomeSlider />
         </div>
       </section>
 
