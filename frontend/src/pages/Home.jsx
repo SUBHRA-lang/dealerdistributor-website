@@ -86,7 +86,7 @@ const Home = () => {
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-8">
                   <div className="bg-white rounded-full px-8 py-4 shadow-lg">
                     <p className="text-sm font-semibold text-gray-900">Exclusive Brands</p>
-                    <p className="text-xs text-gray-600">Top Industry Players Trust GetDistributors</p>
+                    <p className="text-xs text-gray-600">Top Industry Players Trust DealerDistributors</p>
                   </div>
                 </div>
               </div>
@@ -253,6 +253,13 @@ const Home = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/testimonials">
+              <Button size="lg" className="bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full px-8">
+                View All Testimonials
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -83,8 +83,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">GetDistributors</h4>
             <ul className="space-y-2">
-              <li><Link to="/membership" className="text-gray-300 hover:text-white transition">Membership</Link></li>
-              <li><Link to="/callback" className="text-gray-300 hover:text-white transition">Request a callback</Link></li>
+              <li><Link to="/request-callback" className="text-gray-300 hover:text-white transition">Request a callback</Link></li>
             </ul>
           </div>
 

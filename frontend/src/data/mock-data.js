@@ -22,6 +22,7 @@ export const categories = [
 export const distributors = [
   {
     id: 1,
+    type: 'distributor',
     name: 'Epsilon Petrochem',
     category: 'Automobile',
     categoryId: 10,
@@ -37,6 +38,7 @@ export const distributors = [
   },
   {
     id: 2,
+    type: 'distributor',
     name: 'Jayant Agro-Organics Limited',
     category: 'Health & Beauty',
     categoryId: 2,
@@ -52,6 +54,7 @@ export const distributors = [
   },
   {
     id: 3,
+    type: 'distributor',
     name: 'Eagle Plant Protect Pvt. Ltd.',
     category: 'Chemicals',
     categoryId: 5,
@@ -67,6 +70,7 @@ export const distributors = [
   },
   {
     id: 4,
+    type: 'distributor',
     name: 'Konya Biotech Private Limited',
     category: 'Health & Beauty',
     categoryId: 2,
@@ -82,6 +86,7 @@ export const distributors = [
   },
   {
     id: 5,
+    type: 'distributor',
     name: 'Toreto Retail Private Limited',
     category: 'Consumer Electronics',
     categoryId: 14,
@@ -97,6 +102,7 @@ export const distributors = [
   },
   {
     id: 6,
+    type: 'distributor',
     name: 'Nutrinest Foods',
     category: 'Food & Beverage',
     categoryId: 1,
@@ -109,33 +115,121 @@ export const distributors = [
     location: 'Mumbai, Maharashtra',
     experience: 'New Entry',
     territories: ['Maharashtra', 'Gujarat']
+  },
+  {
+    id: 7,
+    type: 'franchise',
+    name: 'Kunafa Hub',
+    category: 'Food & Beverage',
+    categoryId: 1,
+    logo: 'https://via.placeholder.com/200x200/FF6B2C/ffffff?text=KH',
+    investmentRange: '₹ 50,000',
+    established: 2021,
+    products: ['Authentic Kunafa', 'Arabic Desserts', 'Beverages'],
+    phone: '08071793082',
+    description: 'Popular dessert franchise specializing in authentic Arabic Kunafa and sweets.',
+    location: 'Kozhikode, Kerala',
+    experience: '3 years',
+    territories: ['Kerala', 'Tamil Nadu']
+  },
+  {
+    id: 8,
+    type: 'franchise',
+    name: 'HFC Food Private Limited',
+    category: 'Food & Beverage',
+    categoryId: 1,
+    logo: 'https://via.placeholder.com/200x200/2C3E95/ffffff?text=HFC',
+    investmentRange: '₹ 5Lac - ₹10Lac',
+    established: 2018,
+    products: ['Fried Chicken', 'Burgers', 'Sides'],
+    phone: '08758655303',
+    description: 'Fast food franchise offering high-quality fried chicken and continental quick bites.',
+    location: 'Kolkata, West Bengal',
+    experience: '6 years',
+    territories: ['West Bengal', 'Bihar', 'Odisha']
+  },
+  {
+    id: 9,
+    type: 'franchise',
+    name: 'Style Saga',
+    category: 'Apparel & Fashion',
+    categoryId: 4,
+    logo: 'https://via.placeholder.com/200x200/EC4899/ffffff?text=SS',
+    investmentRange: '₹ 30Lac - ₹50Lac',
+    established: 2015,
+    products: ['Ethnic Wear', 'Designer Sarees', 'Lehengas'],
+    phone: '07971459539',
+    description: 'Premium ethnic wear franchise for women, showcasing Kasturi Creations designer labels.',
+    location: 'Faridabad, Haryana',
+    experience: '9 years',
+    territories: ['North India', 'West India']
+  },
+  {
+    id: 10,
+    type: 'franchise',
+    name: 'Aidley Formulations',
+    category: 'Health & Beauty',
+    categoryId: 2,
+    logo: 'https://via.placeholder.com/200x200/10B981/ffffff?text=AF',
+    investmentRange: '₹ 50,000 - ₹2Lac',
+    established: 2022,
+    products: ['Skincare Products', 'Haircare Solutions', 'Wellness Formulations'],
+    phone: '07971459829',
+    description: 'Pharmaceutical and cosmetics franchise focusing on effective health and beauty formulations.',
+    location: 'Mohali, Punjab',
+    experience: '2 years',
+    territories: ['Punjab', 'Haryana', 'Himachal Pradesh']
   }
 ];
 
 export const testimonials = [
   {
     id: 1,
-    name: 'Mr Subhash Gangadhar Chandane',
-    designation: 'General Manager',
-    company: 'Greensense Energy Systems Pvt. Ltd.',
-    image: 'https://via.placeholder.com/100x100/4F46E5/ffffff?text=SC',
-    testimonial: 'I am extremely satisfied with the services provided by GetDistributors. Since I joined them, I have received a good number of inquiries. They have exceeded my expectations and provided exceptional service so far.'
+    name: 'Mr Vyankatesh (BDO)',
+    designation: 'Business Development Officer',
+    company: 'Sarvika Enterprises, Taloja, Maharashtra',
+    image: 'https://via.placeholder.com/100x100/4F46E5/ffffff?text=VE',
+    testimonial: 'I highly recommend GetDistributors.com to anyone looking to expand their distribution network. Their platform has played a key role in connecting us with highly reliable distributors and partners.'
   },
   {
     id: 2,
-    name: 'Mr Saud Dastagir',
-    designation: 'General Manager',
-    company: 'Soft Touchline Products Pvt. Ltd.',
-    image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=SD',
-    testimonial: 'GetDistributors.com is a commercial miracle that impressed us right after we signed up. Our specific needs were promptly met thanks to the dedicated account manager\'s personalized service.'
+    name: 'Mr. Sarbjit Singh',
+    designation: 'Proprietor',
+    company: 'Cosmba Machinery Co., Moradabad, Uttar Pradesh',
+    image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=SS',
+    testimonial: 'GetDistributors.com has been a game-changer for our company. Their user-friendly interface made it easy to connect with verified distributors.'
   },
   {
     id: 3,
-    name: 'Mr. Sheeju Varghese',
+    name: 'Mr Sanmesh Naik',
+    designation: 'MD',
+    company: 'Kakushin Enterprise, Vasai, Maharashtra',
+    image: 'https://via.placeholder.com/100x100/F59E0B/ffffff?text=SN',
+    testimonial: 'Within a few days of joining we started getting genuine leads from all across India. Within 4 weeks we successfully appointed 4 potential distributors.'
+  },
+  {
+    id: 4,
+    name: 'Mr Bharat Boda',
+    designation: 'Partner',
+    company: 'Safe Power Products, Morbi, Gujarat',
+    image: 'https://via.placeholder.com/100x100/EC4899/ffffff?text=BB',
+    testimonial: 'GetDistributors.com has completely revamped our business! It connected me with the ideal distributors that not only matched my interests but also aligned perfectly with my goals.'
+  },
+  {
+    id: 5,
+    name: 'Mr Vipin Jindal',
     designation: 'Director',
-    company: 'Powertroniks Solar Pvt. Ltd.',
-    image: 'https://via.placeholder.com/100x100/F59E0B/ffffff?text=SV',
-    testimonial: 'Since we started using GetDistributors.com, our business has been completely transformed. Our account manager was exceptionally helpful and provided us with guidance every step of the way.'
+    company: 'Prizma Safetech Private Limited, Delhi',
+    image: 'https://via.placeholder.com/100x100/8B5CF6/ffffff?text=VJ',
+    testimonial: 'Their platform is a treasure trove. Working with the committed account manager was a delight because she offered great direction and assistance.'
+  },
+  {
+    id: 6,
+    name: 'Mr Mohd Arif',
+    designation: 'Director',
+    company: 'Anjoqueen Magic Delight Private Limited, Faridabad, Haryana',
+    image: 'https://via.placeholder.com/100x100/14B8A6/ffffff?text=MA',
+    testimonial: 'Excellent platform if you want to connect with credible distributors, expand your company\'s growth, and enhance your brand value.'
   }
 ];
 
@@ -170,7 +264,7 @@ export const blogPosts = [
 ];
 
 export const videoTestimonials = [
-  { id: 1, youtubeId: 'kveOfJWz5Qw', thumbnail: 'https://img.youtube.com/vi/kveOfJWz5Qw/maxresdefault.jpg' },
-  { id: 2, youtubeId: 'I6hENYZiRoY', thumbnail: 'https://img.youtube.com/vi/I6hENYZiRoY/maxresdefault.jpg' },
-  { id: 3, youtubeId: 'vLV9-RqOjUE', thumbnail: 'https://img.youtube.com/vi/vLV9-RqOjUE/maxresdefault.jpg' }
+  { id: 1, youtubeId: 'kveOfJWz5Qw', thumbnail: 'https://img.youtube.com/vi/kveOfJWz5Qw/maxresdefault.jpg', title: 'Service Review Compilation' },
+  { id: 2, youtubeId: 'I6hENYZiRoY', thumbnail: 'https://img.youtube.com/vi/I6hENYZiRoY/maxresdefault.jpg', title: 'Abhinav Pandey (Owner)' },
+  { id: 3, youtubeId: 'vLV9-RqOjUE', thumbnail: 'https://img.youtube.com/vi/vLV9-RqOjUE/maxresdefault.jpg', title: 'Ms. Urmila Meghnani (Owner)' }
 ];
