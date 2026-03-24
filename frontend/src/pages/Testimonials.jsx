@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '../components/ui/card';
+import { Button } from '../components/ui/button';
 import { testimonials, videoTestimonials } from '../data/mock-data';
 
 const Testimonials = () => {
+  const [visibleCount, setVisibleCount] = useState(6);
+  
+  const showMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
+
+  const visibleTestimonials = testimonials.slice(0, visibleCount);
+
   return (
     <div className="min-h-screen bg-gray-50 pt-20 pb-16">
       <div className="container mx-auto px-4">
@@ -50,7 +59,7 @@ const Testimonials = () => {
             What Our Clients Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
+            {visibleTestimonials.map((testimonial) => (
               <Card key={testimonial.id} className="hover:shadow-lg transition-all duration-300 border-none bg-white">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
@@ -79,6 +88,17 @@ const Testimonials = () => {
               </Card>
             ))}
           </div>
+          
+          {visibleCount < testimonials.length && (
+            <div className="text-center mt-12">
+              <Button 
+                onClick={showMore}
+                className="bg-[#FF6B2C] hover:bg-[#e55a1f] text-white font-bold py-6 px-10 rounded-full shadow-lg transition-all"
+              >
+                Show More Results
+              </Button>
+            </div>
+          )}
         </section>
       </div>
     </div>

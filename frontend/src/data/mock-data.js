@@ -230,6 +230,54 @@ export const testimonials = [
     company: 'Anjoqueen Magic Delight Private Limited, Faridabad, Haryana',
     image: 'https://via.placeholder.com/100x100/14B8A6/ffffff?text=MA',
     testimonial: 'Excellent platform if you want to connect with credible distributors, expand your company\'s growth, and enhance your brand value.'
+  },
+  {
+    id: 7,
+    name: 'Mr. Rajesh Kumar',
+    designation: 'Managing Director',
+    company: 'Rajesh Trading Co., Indore, MP',
+    image: 'https://via.placeholder.com/100x100/F43F5E/ffffff?text=RK',
+    testimonial: 'We found very professional distributors within 2 weeks of our requirement post. The support team is very helpful.'
+  },
+  {
+    id: 8,
+    name: 'Ms. Deepika Sharma',
+    designation: 'Owner',
+    company: 'Organic Life, Jaipur, Rajasthan',
+    image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=DS',
+    testimonial: 'A must-have platform for any manufacturer looking to go national. Their verification process is top-notch.'
+  },
+  {
+    id: 9,
+    name: 'Mr. Amit Patel',
+    designation: 'Sales Head',
+    company: 'Patel Electronics, Surat, Gujarat',
+    image: 'https://via.placeholder.com/100x100/3B82F6/ffffff?text=AP',
+    testimonial: 'Our business expanded to 3 new states in just 3 months. Highly efficient service!'
+  },
+  {
+    id: 10,
+    name: 'Mr. Vikram Singh',
+    designation: 'Founder',
+    company: 'Singh Spices, Amritsar, Punjab',
+    image: 'https://via.placeholder.com/100x100/8B5CF6/ffffff?text=VS',
+    testimonial: 'Excellent ROI. We used to struggle to find distributors in the South, but now we have a strong presence there.'
+  },
+  {
+    id: 11,
+    name: 'Ms. Neha Gupta',
+    designation: 'CEO',
+    company: 'Neha Cosmetics, Kolkata, WB',
+    image: 'https://via.placeholder.com/100x100/EC4899/ffffff?text=NG',
+    testimonial: 'The dashboard is very intuitive and the lead quality is consistently high.'
+  },
+  {
+    id: 12,
+    name: 'Mr. Suresh Menon',
+    designation: 'Partner',
+    company: 'Suresh & Co, Kochi, Kerala',
+    image: 'https://via.placeholder.com/100x100/14B8A6/ffffff?text=SM',
+    testimonial: 'DealerDistributors has helped us build a reliable network of supply chain partners across South India.'
   }
 ];
 
@@ -260,6 +308,60 @@ export const blogPosts = [
     date: '2025-02-10',
     author: 'GetDistributors Team',
     category: 'Guide'
+  },
+  {
+    id: 4,
+    title: '5 Tips to Choose the Right Distributor for Your Business',
+    excerpt: 'Selecting the right partner is crucial for long-term success. Learn how to evaluate potential distributors...',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=250&fit=crop',
+    date: '2025-01-25',
+    author: 'Marketing Team',
+    category: 'Guide'
+  },
+  {
+    id: 5,
+    title: 'Trends in the Indian Pharmaceutical Distribution Market',
+    excerpt: 'The pharma sector is undergoing a digital transformation. Discover the latest trends in drug distribution...',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?w=400&h=250&fit=crop',
+    date: '2025-01-15',
+    author: 'Pharma Expert',
+    category: 'Insights'
+  },
+  {
+    id: 6,
+    title: 'Future of E-commerce Logistics in Rural India',
+    excerpt: 'Reaching the last mile in rural India is the next big challenge for e-commerce companies...',
+    image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?w=400&h=250&fit=crop',
+    date: '2025-01-05',
+    author: 'Tech Team',
+    category: 'Insights'
+  },
+  {
+    id: 7,
+    title: 'Sustainable Packaging: A New Standard for Distribution',
+    excerpt: 'Eco-friendly packaging is no longer optional. Learn how to implement green practices in your supply chain...',
+    image: 'https://images.unsplash.com/photo-1591336445984-750d4eb8ba0b?w=400&h=250&fit=crop',
+    date: '2024-12-20',
+    author: 'Sustainability Team',
+    category: 'Insights'
+  },
+  {
+    id: 8,
+    title: 'The Role of AI in Inventory Management',
+    excerpt: 'Artificial Intelligence is revolutionizing how businesses manage their stock and predict demand...',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop',
+    date: '2024-12-10',
+    author: 'Data Team',
+    category: 'Insights'
+  },
+  {
+    id: 9,
+    title: 'Expanding Your Franchise: When is the Right Time?',
+    excerpt: 'Scaling a franchise requires careful timing and market analysis. Here is how to know if you are ready...',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop',
+    date: '2024-12-01',
+    author: 'Franchise Team',
+    category: 'Insights'
   }
 ];
 

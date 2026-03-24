@@ -106,9 +106,12 @@ const Terms = () => {
           <div className="mt-20 p-8 bg-gray-50 rounded-3xl border border-gray-100 text-center">
             <h3 className="text-xl font-bold text-gray-900 mb-2">Have questions about our terms?</h3>
             <p className="text-gray-600 mb-6">Our legal team is here to help you understand your rights and responsibilities.</p>
-            <button className="bg-[#2C3E95] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#1f2d6b] transition-colors shadow-lg shadow-blue-500/10">
+            <a 
+              href="mailto:legal@dealerdistributors.com"
+              className="inline-block bg-[#2C3E95] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#1f2d6b] transition-colors shadow-lg shadow-blue-500/10"
+            >
               Contact Legal Support
-            </button>
+            </a>
           </div>
         </div>
       </div>
