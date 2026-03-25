@@ -95,7 +95,7 @@ const Home = () => {
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="col-span-3 transform translate-x-[10px]">
+            <div className="col-span-3 transform translate-x-[20px]">
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
