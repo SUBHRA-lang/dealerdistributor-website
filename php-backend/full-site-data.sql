@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-35: -- ── Distributors ─────────────────────────────────────────────
+-- ── Distributors ─────────────────────────────────────────────
 
 CREATE TABLE IF NOT EXISTS `distributors` (
   `id`               INT AUTO_INCREMENT PRIMARY KEY,
