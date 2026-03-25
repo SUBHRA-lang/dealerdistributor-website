@@ -26,7 +26,7 @@ const Home = () => {
           testimonialsAPI.getFeatured(),
           blogAPI.getPosts({ limit: 3 })
         ]);
-        
+
         setDistributors(distRes.data);
         setTestimonials(testRes.data);
         setBlogPosts(blogRes.data);
@@ -73,12 +73,13 @@ const Home = () => {
                 <br />
                 <span className="text-[#2C3E95]">Expansion and Entrepreneurial Success!</span>
               </h1>
-              
+
               {/* Hero Image with Brands */}
               <div className="relative my-8">
                 <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-[#4C3F91] to-[#2C3E95] flex items-center justify-center overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                    // src="/assets/hero-dealer.png"
                     alt="Business professional"
                     className="w-full h-full object-cover"
                   />
@@ -99,7 +100,7 @@ const Home = () => {
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
                   <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
-                  
+
                   <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-3 mb-6">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="distributor" id="distributor" />
@@ -148,7 +149,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Banner Slider Section */}
       <section className="py-8 bg-white">
         <div className="container mx-auto px-4">

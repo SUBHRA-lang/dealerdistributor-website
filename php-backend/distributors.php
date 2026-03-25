@@ -14,7 +14,7 @@ function formatDistributor(array $row): array {
         'id'            => (string) $row['id'],
         'name'          => $row['name'],
         'category'      => $row['category_name'],
-        'logo'          => $row['logo'],
+        'logo'          => str_replace('via.placeholder.com', 'placehold.co', $row['logo']),
         'investmentRange' => $row['investment_range'],
         'established'   => (int) $row['established'],
         'products'      => json_decode($row['products'] ?? '[]', true),

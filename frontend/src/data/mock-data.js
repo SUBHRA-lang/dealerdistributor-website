@@ -26,7 +26,7 @@ export const distributors = [
     name: 'Epsilon Petrochem',
     category: 'Automobile',
     categoryId: 10,
-    logo: 'https://via.placeholder.com/200x200/4F46E5/ffffff?text=EP',
+    logo: 'https://placehold.co/200x200/4F46E5/ffffff?text=EP',
     investmentRange: '₹ 5Lac - ₹10Lac',
     established: 1993,
     products: ['BIKE ENGINE OIL - KEMRON FLY 4T 20W40 SN', 'KEMRON MOTOBIKE 4T 20W50 SL', 'KEMRON AEROFLY 4T 10W30 SL', 'KEMRON HYDROTECH AW 68 BERAL'],
@@ -42,7 +42,7 @@ export const distributors = [
     name: 'Jayant Agro-Organics Limited',
     category: 'Health & Beauty',
     categoryId: 2,
-    logo: 'https://via.placeholder.com/200x200/10B981/ffffff?text=JAO',
+    logo: 'https://placehold.co/200x200/10B981/ffffff?text=JAO',
     investmentRange: '₹ 1Lac - ₹2Lac',
     established: 2020,
     products: ['EriCare Organic Castor Oil 200ML', 'EriCare Organic Castor Oil 50ML', '200ML EriCare Cold-Pressed Castor Oil', '500ML EriCare Cold-Pressed Castor Oil'],
@@ -58,7 +58,7 @@ export const distributors = [
     name: 'Eagle Plant Protect Pvt. Ltd.',
     category: 'Chemicals',
     categoryId: 5,
-    logo: 'https://via.placeholder.com/200x200/F59E0B/ffffff?text=EPP',
+    logo: 'https://placehold.co/200x200/F59E0B/ffffff?text=EPP',
     investmentRange: '₹ 1Lac - ₹2Lac',
     established: 2009,
     products: ['Disaster Bio Plant Protector', 'Paragle Paraquat Dichloride Herbicide', 'Boforce Gold Insecticide', 'Bhukamp For all types of Crops'],
@@ -74,7 +74,7 @@ export const distributors = [
     name: 'Konya Biotech Private Limited',
     category: 'Health & Beauty',
     categoryId: 2,
-    logo: 'https://via.placeholder.com/200x200/EC4899/ffffff?text=KBL',
+    logo: 'https://placehold.co/200x200/EC4899/ffffff?text=KBL',
     investmentRange: '₹ 1Lac - ₹5Lac',
     established: 2025,
     products: ['Tylvalo-WSP TYLVALOSIN 62.5%', 'Gentacin-WSP Gentamicin 10%', 'Lasalocid-WSP LASALOCID SODIUM 20%', 'LincoSpect-WSP LINCOMYCIN 22.2% +SPECTINOMYCIN 44.4%'],
@@ -90,7 +90,7 @@ export const distributors = [
     name: 'Toreto Retail Private Limited',
     category: 'Consumer Electronics',
     categoryId: 14,
-    logo: 'https://via.placeholder.com/200x200/8B5CF6/ffffff?text=TR',
+    logo: 'https://placehold.co/200x200/8B5CF6/ffffff?text=TR',
     investmentRange: '₹ 2Lac - ₹5Lac',
     established: 2014,
     products: ['Fidget Pop Portable Bluetooth speaker', 'Party Rockz Bluetooth speaker', 'Twin Magno Magnetic wireless Bluetooth speaker', 'Wave Mini Portable Bluetooth speaker'],
@@ -106,7 +106,7 @@ export const distributors = [
     name: 'Nutrinest Foods',
     category: 'Food & Beverage',
     categoryId: 1,
-    logo: 'https://via.placeholder.com/200x200/14B8A6/ffffff?text=NF',
+    logo: 'https://placehold.co/200x200/14B8A6/ffffff?text=NF',
     investmentRange: '₹ 2Lac - ₹3Lac',
     established: 2025,
     products: ['Peanut Butter Chocolate Flavour 500g [Crunchy]', 'Hazelnut Peanut Butter', 'Peanut Butter Strawberry 1kg [Crunchy]', 'Cookies and Cream'],
@@ -122,7 +122,7 @@ export const distributors = [
     name: 'Kunafa Hub',
     category: 'Food & Beverage',
     categoryId: 1,
-    logo: 'https://via.placeholder.com/200x200/FF6B2C/ffffff?text=KH',
+    logo: 'https://placehold.co/200x200/FF6B2C/ffffff?text=KH',
     investmentRange: '₹ 50,000',
     established: 2021,
     products: ['Authentic Kunafa', 'Arabic Desserts', 'Beverages'],
@@ -138,7 +138,7 @@ export const distributors = [
     name: 'HFC Food Private Limited',
     category: 'Food & Beverage',
     categoryId: 1,
-    logo: 'https://via.placeholder.com/200x200/2C3E95/ffffff?text=HFC',
+    logo: 'https://placehold.co/200x200/2C3E95/ffffff?text=HFC',
     investmentRange: '₹ 5Lac - ₹10Lac',
     established: 2018,
     products: ['Fried Chicken', 'Burgers', 'Sides'],
@@ -154,7 +154,7 @@ export const distributors = [
     name: 'Style Saga',
     category: 'Apparel & Fashion',
     categoryId: 4,
-    logo: 'https://via.placeholder.com/200x200/EC4899/ffffff?text=SS',
+    logo: 'https://placehold.co/200x200/EC4899/ffffff?text=SS',
     investmentRange: '₹ 30Lac - ₹50Lac',
     established: 2015,
     products: ['Ethnic Wear', 'Designer Sarees', 'Lehengas'],
@@ -170,7 +170,7 @@ export const distributors = [
     name: 'Aidley Formulations',
     category: 'Health & Beauty',
     categoryId: 2,
-    logo: 'https://via.placeholder.com/200x200/10B981/ffffff?text=AF',
+    logo: 'https://placehold.co/200x200/10B981/ffffff?text=AF',
     investmentRange: '₹ 50,000 - ₹2Lac',
     established: 2022,
     products: ['Skincare Products', 'Haircare Solutions', 'Wellness Formulations'],
@@ -188,7 +188,7 @@ export const testimonials = [
     name: 'Mr Vyankatesh (BDO)',
     designation: 'Business Development Officer',
     company: 'Sarvika Enterprises, Taloja, Maharashtra',
-    image: 'https://via.placeholder.com/100x100/4F46E5/ffffff?text=VE',
+    image: 'https://placehold.co/100x100/4F46E5/ffffff?text=VE',
     testimonial: 'I highly recommend DealerDistributors.com to anyone looking to expand their distribution network. Their platform has played a key role in connecting us with highly reliable distributors and partners.'
   },
   {
@@ -196,7 +196,7 @@ export const testimonials = [
     name: 'Mr. Sarbjit Singh',
     designation: 'Proprietor',
     company: 'Cosmba Machinery Co., Moradabad, Uttar Pradesh',
-    image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=SS',
+    image: 'https://placehold.co/100x100/10B981/ffffff?text=SS',
     testimonial: 'DealerDistributors.com has been a game-changer for our company. Their user-friendly interface made it easy to connect with verified distributors.'
   },
   {
@@ -204,7 +204,7 @@ export const testimonials = [
     name: 'Mr Sanmesh Naik',
     designation: 'MD',
     company: 'Kakushin Enterprise, Vasai, Maharashtra',
-    image: 'https://via.placeholder.com/100x100/F59E0B/ffffff?text=SN',
+    image: 'https://placehold.co/100x100/F59E0B/ffffff?text=SN',
     testimonial: 'Within a few days of joining we started getting genuine leads from all across India. Within 4 weeks we successfully appointed 4 potential distributors.'
   },
   {
@@ -212,7 +212,7 @@ export const testimonials = [
     name: 'Mr Bharat Boda',
     designation: 'Partner',
     company: 'Safe Power Products, Morbi, Gujarat',
-    image: 'https://via.placeholder.com/100x100/EC4899/ffffff?text=BB',
+    image: 'https://placehold.co/100x100/EC4899/ffffff?text=BB',
     testimonial: 'DealerDistributors.com has completely revamped our business! It connected me with the ideal distributors that not only matched my interests but also aligned perfectly with my goals.'
   },
   {
@@ -220,7 +220,7 @@ export const testimonials = [
     name: 'Mr Vipin Jindal',
     designation: 'Director',
     company: 'Prizma Safetech Private Limited, Delhi',
-    image: 'https://via.placeholder.com/100x100/8B5CF6/ffffff?text=VJ',
+    image: 'https://placehold.co/100x100/8B5CF6/ffffff?text=VJ',
     testimonial: 'Their platform is a treasure trove. Working with the committed account manager was a delight because she offered great direction and assistance.'
   },
   {
@@ -228,7 +228,7 @@ export const testimonials = [
     name: 'Mr Mohd Arif',
     designation: 'Director',
     company: 'Anjoqueen Magic Delight Private Limited, Faridabad, Haryana',
-    image: 'https://via.placeholder.com/100x100/14B8A6/ffffff?text=MA',
+    image: 'https://placehold.co/100x100/14B8A6/ffffff?text=MA',
     testimonial: 'Excellent platform if you want to connect with credible distributors, expand your company\'s growth, and enhance your brand value.'
   },
   {
@@ -236,7 +236,7 @@ export const testimonials = [
     name: 'Mr. Rajesh Kumar',
     designation: 'Managing Director',
     company: 'Rajesh Trading Co., Indore, MP',
-    image: 'https://via.placeholder.com/100x100/F43F5E/ffffff?text=RK',
+    image: 'https://placehold.co/100x100/F43F5E/ffffff?text=RK',
     testimonial: 'We found very professional distributors within 2 weeks of our requirement post. The support team is very helpful.'
   },
   {
@@ -244,7 +244,7 @@ export const testimonials = [
     name: 'Ms. Deepika Sharma',
     designation: 'Owner',
     company: 'Organic Life, Jaipur, Rajasthan',
-    image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=DS',
+    image: 'https://placehold.co/100x100/10B981/ffffff?text=DS',
     testimonial: 'A must-have platform for any manufacturer looking to go national. Their verification process is top-notch.'
   },
   {
@@ -252,7 +252,7 @@ export const testimonials = [
     name: 'Mr. Amit Patel',
     designation: 'Sales Head',
     company: 'Patel Electronics, Surat, Gujarat',
-    image: 'https://via.placeholder.com/100x100/3B82F6/ffffff?text=AP',
+    image: 'https://placehold.co/100x100/3B82F6/ffffff?text=AP',
     testimonial: 'Our business expanded to 3 new states in just 3 months. Highly efficient service!'
   },
   {
@@ -260,7 +260,7 @@ export const testimonials = [
     name: 'Mr. Vikram Singh',
     designation: 'Founder',
     company: 'Singh Spices, Amritsar, Punjab',
-    image: 'https://via.placeholder.com/100x100/8B5CF6/ffffff?text=VS',
+    image: 'https://placehold.co/100x100/8B5CF6/ffffff?text=VS',
     testimonial: 'Excellent ROI. We used to struggle to find distributors in the South, but now we have a strong presence there.'
   },
   {
@@ -268,7 +268,7 @@ export const testimonials = [
     name: 'Ms. Neha Gupta',
     designation: 'CEO',
     company: 'Neha Cosmetics, Kolkata, WB',
-    image: 'https://via.placeholder.com/100x100/EC4899/ffffff?text=NG',
+    image: 'https://placehold.co/100x100/EC4899/ffffff?text=NG',
     testimonial: 'The dashboard is very intuitive and the lead quality is consistently high.'
   },
   {
@@ -276,7 +276,7 @@ export const testimonials = [
     name: 'Mr. Suresh Menon',
     designation: 'Partner',
     company: 'Suresh & Co, Kochi, Kerala',
-    image: 'https://via.placeholder.com/100x100/14B8A6/ffffff?text=SM',
+    image: 'https://placehold.co/100x100/14B8A6/ffffff?text=SM',
     testimonial: 'DealerDistributors has helped us build a reliable network of supply chain partners across South India.'
   }
 ];

@@ -13,7 +13,7 @@ function formatTestimonial(array $row): array {
         'name'        => $row['name'],
         'designation' => $row['designation'],
         'company'     => $row['company'],
-        'image'       => $row['image'],
+        'image'       => str_replace('via.placeholder.com', 'placehold.co', $row['image']),
         'testimonial' => $row['testimonial'],
     ];
 }
