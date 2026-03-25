@@ -2,6 +2,7 @@
 
 export const categories = [
   { id: 1, name: 'Food & Beverage', icon: 'UtensilsCrossed', slug: 'food-beverage' },
+  { id: 17, name: 'FMCG', icon: 'ShoppingCart', slug: 'fmcg' },
   { id: 2, name: 'Health & Beauty', icon: 'Heart', slug: 'health-beauty' },
   { id: 3, name: 'Pharmaceuticals', icon: 'Pill', slug: 'pharmaceuticals' },
   { id: 4, name: 'Apparel & Fashion', icon: 'Shirt', slug: 'apparel-fashion' },

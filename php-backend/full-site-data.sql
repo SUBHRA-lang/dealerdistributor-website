@@ -161,6 +161,7 @@ SET NAMES utf8mb4;
 -- Table: categories
 TRUNCATE TABLE `categories`;
 INSERT INTO `categories` (`name`, `slug`, `icon`, `description`, `is_active`) VALUES ('Food & Beverage', 'food-beverage', 'UtensilsCrossed', NULL, 1);
+INSERT INTO `categories` (`name`, `slug`, `icon`, `description`, `is_active`) VALUES ('FMCG', 'fmcg', 'ShoppingCart', NULL, 1);
 INSERT INTO `categories` (`name`, `slug`, `icon`, `description`, `is_active`) VALUES ('Health & Beauty', 'health-beauty', 'Heart', NULL, 1);
 INSERT INTO `categories` (`name`, `slug`, `icon`, `description`, `is_active`) VALUES ('Pharmaceuticals', 'pharmaceuticals', 'Pill', NULL, 1);
 INSERT INTO `categories` (`name`, `slug`, `icon`, `description`, `is_active`) VALUES ('Apparel & Fashion', 'apparel-fashion', 'Shirt', NULL, 1);
