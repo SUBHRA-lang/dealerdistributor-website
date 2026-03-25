@@ -20,19 +20,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Sample categories (matching original seed data)
-INSERT INTO `categories` (`name`, `slug`, `icon`) VALUES
-  ('Electronics',     'electronics',   '💻'),
-  ('Fashion',         'fashion',       '👗'),
-  ('Food & Beverage', 'food-beverage', '🍔'),
-  ('Healthcare',      'healthcare',    '🏥'),
-  ('Home Appliances', 'home-appliances','🏠'),
-  ('Automobiles',     'automobiles',   '🚗'),
-  ('Education',       'education',     '📚'),
-  ('Sports',          'sports',        '⚽');
 
+35: -- ── Distributors ─────────────────────────────────────────────
 
--- ── Distributors ─────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS `distributors` (
   `id`               INT AUTO_INCREMENT PRIMARY KEY,
   `name`             VARCHAR(255) NOT NULL,
