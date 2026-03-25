@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { useToast } from '../hooks/use-toast';
+import { authAPI } from '../services/api';
 
 const Join = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     userType: '',
     name: '',
@@ -19,7 +22,7 @@ const Join = () => {
     confirmPassword: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       toast({
@@ -29,10 +32,24 @@ const Join = () => {
       });
       return;
     }
-    toast({
-      title: 'Account Created!',
-      description: 'Welcome to GetDistributors.com',
-    });
+
+    setLoading(true);
+    try {
+      await authAPI.register(formData);
+      toast({
+        title: 'Account Created!',
+        description: 'Welcome to DealerDistributors.com. Please sign in.',
+      });
+      navigate('/signin');
+    } catch (error) {
+      toast({
+        title: 'Registration Failed',
+        description: error.response?.data?.detail || 'Something went wrong',
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -44,7 +61,7 @@ const Join = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Join GetDistributors</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">Join DealerDistributors</h1>
             <p className="text-gray-600">Create your free account and start growing your business</p>
           </div>
 
@@ -160,8 +177,8 @@ const Join = () => {
                   </label>
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full">
-                  Create Free Account
+                <Button type="submit" size="lg" className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full" disabled={loading}>
+                  {loading ? 'Creating Account...' : 'Create Free Account'}
                 </Button>
               </form>
 

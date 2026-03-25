@@ -55,7 +55,28 @@ try {
         $body['description'],
     ]);
 
+
     $newId = $pdo->lastInsertId();
+
+    // Send notification email
+    $to = "query@dealerdistributors.com";
+    $subject = "New Requirement Posted: " . $body['businessType'];
+    $message = "A new requirement has been posted.\n\n" .
+               "Business Type: " . $body['businessType'] . "\n" .
+               "Category: " . $body['category'] . "\n" .
+               "Product: " . $body['productName'] . "\n" .
+               "Company: " . $body['companyName'] . "\n" .
+               "Contact: " . $body['contactPerson'] . "\n" .
+               "Email: " . $body['email'] . "\n" .
+               "Phone: " . $body['phone'] . "\n" .
+               "Location: " . $body['location'] . "\n" .
+               "Investment: " . $body['investment'] . "\n" .
+               "Territories: " . $body['territories'] . "\n" .
+               "Description: " . $body['description'];
+    
+    $headers = "From: system@dealerdistributors.com";
+    @mail($to, $subject, $message, $headers);
+
     echo json_encode([
         'success' => true,
         'message' => 'Requirement submitted successfully',

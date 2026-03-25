@@ -1,5 +1,5 @@
 -- ============================================================
--- setup.sql — Full MySQL Database Schema
+-- full-site-data.sql — Full MySQL Database Schema + Sample Data
 -- Run this in cPanel > phpMyAdmin:
 --   1. Create a new database (e.g. cpanelusername_dealerdb)
 --   2. Select the database
@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 
 -- ── Distributors ─────────────────────────────────────────────
-
 CREATE TABLE IF NOT EXISTS `distributors` (
   `id`               INT AUTO_INCREMENT PRIMARY KEY,
   `name`             VARCHAR(255) NOT NULL,
@@ -123,10 +122,40 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+-- ── Users (Authentication) ───────────────────────────────────
+CREATE TABLE IF NOT EXISTS `users` (
+  `id`         INT AUTO_INCREMENT PRIMARY KEY,
+  `name`       VARCHAR(255) NOT NULL,
+  `email`      VARCHAR(255) NOT NULL UNIQUE,
+  `phone`      VARCHAR(50),
+  `company`    VARCHAR(255),
+  `user_type`  VARCHAR(50),
+  `password`   VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- ── Callbacks (Request Callback) ──────────────────────────────
+CREATE TABLE IF NOT EXISTS `callbacks` (
+  `id`           INT AUTO_INCREMENT PRIMARY KEY,
+  `company_name` VARCHAR(255),
+  `full_name`    VARCHAR(255),
+  `phone`        VARCHAR(50),
+  `city`         VARCHAR(255),
+  `product`      VARCHAR(255),
+  `pincode`      VARCHAR(20),
+  `email`        VARCHAR(255),
+  `type`         VARCHAR(50)  COMMENT 'distributor or franchise',
+  `intent`       VARCHAR(50)  COMMENT 'appoint or become',
+  `status`       VARCHAR(50)  DEFAULT 'pending',
+  `created_at`   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- DATA DUMP --
 
 -- DealerDistributors Database Dump
--- Generated on: 2026-03-20 13:10:23
+-- Generated on: 2026-03-25 15:27:00
 SET NAMES utf8mb4;
 
 -- Table: categories

@@ -66,7 +66,7 @@ export const HomeSlider = () => {
                 alt={banner.title}
                 className="w-full h-full object-cover"
               />
-              {/* Overlay with Text content - matching getdistributors style */}
+              {/* Overlay with Text content - matching DealerDistributors style */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-12 md:px-24">
                 <div className="max-w-xl text-white space-y-6">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight drop-shadow-lg">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Target, Users, Award, TrendingUp } from 'lucide-react';
@@ -122,9 +123,11 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Grow Your Business?</h2>
           <p className="text-xl text-blue-100 mb-8">Join thousands of successful entrepreneurs on our platform</p>
-          <Button size="lg" className="bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full px-8">
-            Get Started Today
-          </Button>
+          <Link to="/join">
+            <Button size="lg" className="bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full px-8">
+              Get Started Today
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

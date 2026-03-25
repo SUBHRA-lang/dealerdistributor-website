@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { useToast } from '../hooks/use-toast';
+import { authAPI } from '../services/api';
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: 'Welcome back!',
-      description: 'You have successfully signed in.',
-    });
+    setLoading(true);
+    try {
+      const response = await authAPI.login(formData);
+      toast({
+        title: 'Welcome back!',
+        description: 'You have successfully signed in.',
+      });
+      // Store user info in localStorage for demo purposes
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/');
+    } catch (error) {
+      toast({
+        title: 'Sign In Failed',
+        description: error.response?.data?.detail || 'Invalid email or password',
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -31,7 +49,7 @@ const SignIn = () => {
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-            <p className="text-gray-600">Sign in to your GetDistributors account</p>
+            <p className="text-gray-600">Sign in to your DealerDistributors account</p>
           </div>
 
           <Card className="shadow-xl">
@@ -70,13 +88,13 @@ const SignIn = () => {
                     <input type="checkbox" className="mr-2" />
                     <span className="text-gray-600">Remember me</span>
                   </label>
-                  <Link to="/forgot-password" className="text-[#2C3E95] hover:underline">
+                  <Link to="/forgot-password" disabled className="text-[#2C3E95] hover:underline cursor-not-allowed opacity-50">
                     Forgot password?
                   </Link>
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full">
-                  Sign In
+                <Button type="submit" size="lg" className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full" disabled={loading}>
+                  {loading ? 'Signing In...' : 'Sign In'}
                 </Button>
               </form>
 

@@ -29,6 +29,9 @@ RewriteRule ^testimonials/?$               testimonials.php             [L,QSA]
 RewriteRule ^requirements/?$                requirements.php    [L,QSA]
 RewriteRule ^contact/?$                     contact.php         [L,QSA]
 RewriteRule ^newsletter/subscribe/?$        newsletter.php      [L,QSA]
+RewriteRule ^join/?$                        join.php            [L,QSA]
+RewriteRule ^signin/?$                      signin.php          [L,QSA]
+RewriteRule ^callback/?$                    callback.php        [L,QSA]
 
 # ── Health check
 RewriteRule ^/?$                            index.php           [L,QSA]

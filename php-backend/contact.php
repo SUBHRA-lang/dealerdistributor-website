@@ -45,9 +45,18 @@ try {
 
     $newId = $pdo->lastInsertId();
 
-    // Optional: send email notification to admin
-    // mail('admin@yourdomain.com', 'New Contact: ' . $body['subject'],
-    //      "From: {$body['name']} ({$body['email']})\n\n{$body['message']}");
+    // Send email notification to admin
+    $to = "query@dealerdistributors.com";
+    $subject = "New Contact/Feedback: " . $body['subject'];
+    $message = "You have received a new message.\n\n" .
+               "From: " . $body['name'] . "\n" .
+               "Email: " . $body['email'] . "\n" .
+               "Phone: " . $body['phone'] . "\n" .
+               "Subject: " . $body['subject'] . "\n\n" .
+               "Message:\n" . $body['message'];
+    
+    $headers = "From: system@dealerdistributors.com";
+    @mail($to, $subject, $message, $headers);
 
     echo json_encode([
         'success' => true,

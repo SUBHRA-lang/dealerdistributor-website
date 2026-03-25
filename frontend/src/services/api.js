@@ -42,6 +42,17 @@ export const newsletterAPI = {
   subscribe: (email) => axios.post(`${API}/newsletter/subscribe`, { email })
 };
 
+// Auth API
+export const authAPI = {
+  register: (data) => axios.post(`${API}/join`, data),
+  login: (data) => axios.post(`${API}/signin`, data)
+};
+
+// Callback API
+export const callbackAPI = {
+  submit: (data) => axios.post(`${API}/callback`, data)
+};
+
 export default {
   categories: categoriesAPI,
   distributors: distributorsAPI,
@@ -49,5 +60,7 @@ export default {
   testimonials: testimonialsAPI,
   requirements: requirementsAPI,
   contact: contactAPI,
-  newsletter: newsletterAPI
+  newsletter: newsletterAPI,
+  auth: authAPI,
+  callback: callbackAPI
 };

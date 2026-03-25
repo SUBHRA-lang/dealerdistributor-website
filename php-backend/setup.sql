@@ -124,10 +124,44 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+
 -- ── Newsletter Subscribers ───────────────────────────────────
 CREATE TABLE IF NOT EXISTS `newsletter` (
   `id`            INT AUTO_INCREMENT PRIMARY KEY,
   `email`         VARCHAR(255) NOT NULL UNIQUE,
   `subscribed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `is_active`     TINYINT(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- ── Users (Registration) ──────────────────────────────────────
+CREATE TABLE IF NOT EXISTS `users` (
+  `id`         INT AUTO_INCREMENT PRIMARY KEY,
+  `user_type`  VARCHAR(50),
+  `name`       VARCHAR(255),
+  `email`      VARCHAR(255) NOT NULL UNIQUE,
+  `phone`      VARCHAR(50),
+  `company`    VARCHAR(255),
+  `password`   VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- ── Callback Requests ─────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS `callbacks` (
+  `id`           INT AUTO_INCREMENT PRIMARY KEY,
+  `type`         VARCHAR(50) COMMENT 'distributor or franchise',
+  `intent`       VARCHAR(50) COMMENT 'appoint or become',
+  `company_name` VARCHAR(255),
+  `full_name`    VARCHAR(255),
+  `phone`        VARCHAR(50),
+  `city`         VARCHAR(255),
+  `product`      VARCHAR(255),
+  `pincode`      VARCHAR(20),
+  `email`        VARCHAR(255),
+  `status`       VARCHAR(50) DEFAULT 'pending',
+  `created_at`   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX (`status`),
+  INDEX (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

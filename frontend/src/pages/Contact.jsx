@@ -22,15 +22,15 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    
+
     try {
       await contactAPI.submit(formData);
-      
+
       toast({
         title: 'Message Sent!',
         description: 'Thank you for contacting us. We will get back to you soon.',
       });
-      
+
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (error) {
       console.error('Error submitting contact form:', error);
@@ -102,7 +102,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 76030 09254"
                         required
                         className="mt-2"
                       />
@@ -135,9 +135,9 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full md:w-auto bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full px-8"
                     disabled={submitting}
                   >
@@ -160,8 +160,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                      <p className="text-gray-600">+91 80 4580 3018</p>
-                      <p className="text-gray-600">+91 79 7145 9539</p>
+                      <p className="text-gray-600 font-bold">7603009254</p>
                     </div>
                   </div>
 
@@ -171,8 +170,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                      <p className="text-gray-600">helpdesk@dealerdistributors.com</p>
-                      <p className="text-gray-600">support@dealerdistributors.com</p>
+                      <p className="text-gray-600">query@dealerdistributors.com</p>
                     </div>
                   </div>
 
@@ -182,10 +180,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
-                      <p className="text-gray-600">
-                        Infocom Network Limited<br />
-                        Noida, Uttar Pradesh<br />
-                        India
+                      <p className="text-gray-600 text-sm">
+                        131/C, Acharya Prafulla Chandra Rd, Manicktala, Goa Bagan, Ward Number 16, Kolkata, West Bengal 700006
                       </p>
                     </div>
                   </div>
@@ -208,9 +204,11 @@ const Contact = () => {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-3">Need Immediate Assistance?</h3>
                 <p className="text-blue-100 mb-4">Our dedicated support team is available to help you with any queries.</p>
-                <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full">
-                  Request Callback
-                </Button>
+                <Link to="/request-callback">
+                  <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full">
+                    Request Callback
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

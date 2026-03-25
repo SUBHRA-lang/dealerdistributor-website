@@ -8,6 +8,7 @@ import { Label } from '../components/ui/label';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { useToast } from '../hooks/use-toast';
+import { callbackAPI } from '../services/api';
 
 const RequestCallback = () => {
   const navigate = useNavigate();
@@ -17,19 +18,44 @@ const RequestCallback = () => {
   const [type, setType] = useState('distributor'); // 'distributor' or 'franchise'
   const [intent, setIntent] = useState('appoint'); // 'appoint' (looking for) or 'become' (want to become)
 
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    companyName: '',
+    fullName: '',
+    phone: '',
+    city: '',
+    product: '',
+    pincode: '',
+    email: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      await callbackAPI.submit({
+        ...formData,
+        type,
+        intent
+      });
       setLoading(false);
       setSubmitted(true);
       toast({
         title: "Request Sent!",
         description: "One of our experts will call you back shortly.",
       });
-    }, 1500);
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Error",
+        description: "Failed to submit request. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   if (submitted) {
@@ -149,7 +175,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Company Name</Label>
                   <div className="relative group">
                     <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Acme Corp" />
+                    <Input name="companyName" value={formData.companyName} onChange={handleChange} required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Acme Corp" />
                   </div>
                 </div>
 
@@ -157,7 +183,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Full Name</Label>
                   <div className="relative group">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. John Doe" />
+                    <Input name="fullName" value={formData.fullName} onChange={handleChange} required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. John Doe" />
                   </div>
                 </div>
 
@@ -165,7 +191,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Mobile Number</Label>
                   <div className="relative group">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-400 border-r border-gray-200 pr-3">+91</span>
-                    <Input required type="tel" className="pl-16 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="98765 43210" />
+                    <Input name="phone" value={formData.phone} onChange={handleChange} required type="tel" className="pl-16 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="98765 43210" />
                   </div>
                 </div>
 
@@ -173,7 +199,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">City Name</Label>
                   <div className="relative group">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Mumbai" />
+                    <Input name="city" value={formData.city} onChange={handleChange} required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Mumbai" />
                   </div>
                 </div>
 
@@ -181,7 +207,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Product Interested In</Label>
                   <div className="relative group">
                     <Package className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Solar Panels" />
+                    <Input name="product" value={formData.product} onChange={handleChange} required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. Solar Panels" />
                   </div>
                 </div>
 
@@ -189,7 +215,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Pin Code</Label>
                   <div className="relative group">
                     <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="400001" />
+                    <Input name="pincode" value={formData.pincode} onChange={handleChange} required className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="400001" />
                   </div>
                 </div>
 
@@ -197,7 +223,7 @@ const RequestCallback = () => {
                   <Label className="text-xs font-black uppercase text-gray-400 tracking-widest pl-1">Email Address</Label>
                   <div className="relative group">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
-                    <Input required type="email" className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. john@example.com" />
+                    <Input name="email" value={formData.email} onChange={handleChange} required type="email" className="pl-12 py-7 rounded-2xl border-gray-100 bg-gray-50 focus-visible:ring-4 focus-visible:ring-blue-500/10" placeholder="e.g. john@example.com" />
                   </div>
                 </div>
               </div>

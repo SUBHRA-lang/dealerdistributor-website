@@ -80,6 +80,18 @@ if ($uri === 'newsletter/subscribe') {
     require 'newsletter.php';
     exit;
 }
+if ($uri === 'join') {
+    require 'join.php';
+    exit;
+}
+if ($uri === 'signin') {
+    require 'signin.php';
+    exit;
+}
+if ($uri === 'callback') {
+    require 'callback.php';
+    exit;
+}
 
 // Default: 404
 http_response_code(404);

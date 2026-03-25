@@ -1,5 +1,13 @@
 # cPanel Deployment Guide
 
+## 🚀 Quick Re-deploy (Latest Changes)
+To update the website with the new **Authentication** and **Forms** features:
+1. **Frontend**: `cd frontend`, set `.env` to production, `npm run build`, zip/upload `build/` contents to `public_html/`.
+2. **Backend**: Upload `php-backend/` files to `public_html/api/` (Override existing).
+3. **Database**: Run new `CREATE TABLE` commands in `php-backend/setup.sql` via phpMyAdmin.
+
+---
+
 ## Folder Structure on cPanel
 
 ```
@@ -18,7 +26,10 @@ public_html/
     ├── testimonials.php
     ├── requirements.php
     ├── contact.php
-    └── newsletter.php
+    ├── newsletter.php
+    ├── join.php            ← NEW (User Registration)
+    ├── signin.php          ← NEW (User Sign In)
+    └── callback.php        ← NEW (Callback Requests)
 ```
 
 ---
@@ -60,16 +71,16 @@ Upload all files from `php-backend/` folder → to `public_html/api/` (create th
 ### 5. Update Frontend Environment Variable
 Edit `frontend/.env` **before building**:
 ```
-REACT_APP_BACKEND_URL=https://yourdomain.com
+REACT_APP_BACKEND_URL=https://dealerdistributors.com
 ```
-The React app will then call `https://yourdomain.com/api/distributors` etc. — which are handled by the PHP files.
+The React app will then call `https://dealerdistributors.com/api/distributors` etc. — which are handled by the PHP files.
 
 ### 6. Verify It Works
 Open these URLs in your browser — each should return JSON:
-- `https://yourdomain.com/api/` → health check
-- `https://yourdomain.com/api/categories` → categories list
-- `https://yourdomain.com/api/distributors` → distributors list
-- `https://yourdomain.com/api/blog/posts` → blog posts
+- `https://dealerdistributors.com/api/` → health check
+- `https://dealerdistributors.com/api/categories` → categories list
+- `https://dealerdistributors.com/api/distributors` → distributors list
+- `https://dealerdistributors.com/api/blog/posts` → blog posts
 
 ---
 

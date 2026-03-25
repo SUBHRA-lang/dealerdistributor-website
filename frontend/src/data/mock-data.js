@@ -1,4 +1,4 @@
-// Mock data for GetDistributors clone
+// Mock data for DealerDistributors clone
 
 export const categories = [
   { id: 1, name: 'Food & Beverage', icon: 'UtensilsCrossed', slug: 'food-beverage' },
@@ -189,7 +189,7 @@ export const testimonials = [
     designation: 'Business Development Officer',
     company: 'Sarvika Enterprises, Taloja, Maharashtra',
     image: 'https://via.placeholder.com/100x100/4F46E5/ffffff?text=VE',
-    testimonial: 'I highly recommend GetDistributors.com to anyone looking to expand their distribution network. Their platform has played a key role in connecting us with highly reliable distributors and partners.'
+    testimonial: 'I highly recommend DealerDistributors.com to anyone looking to expand their distribution network. Their platform has played a key role in connecting us with highly reliable distributors and partners.'
   },
   {
     id: 2,
@@ -197,7 +197,7 @@ export const testimonials = [
     designation: 'Proprietor',
     company: 'Cosmba Machinery Co., Moradabad, Uttar Pradesh',
     image: 'https://via.placeholder.com/100x100/10B981/ffffff?text=SS',
-    testimonial: 'GetDistributors.com has been a game-changer for our company. Their user-friendly interface made it easy to connect with verified distributors.'
+    testimonial: 'DealerDistributors.com has been a game-changer for our company. Their user-friendly interface made it easy to connect with verified distributors.'
   },
   {
     id: 3,
@@ -213,7 +213,7 @@ export const testimonials = [
     designation: 'Partner',
     company: 'Safe Power Products, Morbi, Gujarat',
     image: 'https://via.placeholder.com/100x100/EC4899/ffffff?text=BB',
-    testimonial: 'GetDistributors.com has completely revamped our business! It connected me with the ideal distributors that not only matched my interests but also aligned perfectly with my goals.'
+    testimonial: 'DealerDistributors.com has completely revamped our business! It connected me with the ideal distributors that not only matched my interests but also aligned perfectly with my goals.'
   },
   {
     id: 5,
@@ -288,7 +288,7 @@ export const blogPosts = [
     excerpt: 'According to the current and fast growing Indian FMCG market, the aspect of authentic taste, traditional ingredients as well as reliable quality in the market is defining consumer buying behavior...',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
     date: '2025-03-15',
-    author: 'GetDistributors Team',
+    author: 'DealerDistributors Team',
     category: 'Business Opportunities'
   },
   {
@@ -297,7 +297,7 @@ export const blogPosts = [
     excerpt: 'The growth of the Health Food Industry around the World is increasing rapidly. Peanut butter has become a dominant product in the Plant Protein category...',
     image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=250&fit=crop',
     date: '2025-02-20',
-    author: 'GetDistributors Team',
+    author: 'DealerDistributors Team',
     category: 'Food & Beverage'
   },
   {
