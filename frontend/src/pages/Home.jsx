@@ -62,40 +62,34 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-12 gap-8">
             {/* Left Sidebar - Categories */}
-            <div className="col-span-3">
+            <div className="col-span-3 transform -translate-y-[10px] -translate-x-[70px]">
               <CategorySidebar />
             </div>
 
             {/* Center - Hero Content */}
-            <div className="col-span-6 text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                The Launchpad for Your Business
-                <br />
-                <span className="text-[#2C3E95]">Expansion and Entrepreneurial Success!</span>
-              </h1>
+            <div className="col-span-6">
+              <div className="text-center mb-10">
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                  The Launchpad for Your Business
+                  <br />
+                  <span className="text-[#2C3E95]">Expansion and Entrepreneurial Success!</span>
+                </h1>
+              </div>
 
-              {/* Hero Image with Brands */}
-              <div className="relative my-8">
-                <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-[#4C3F91] to-[#2C3E95] flex items-center justify-center overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
-                    // src="/assets/hero-dealer.png"
-                    alt="Business professional"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Brand Logos Circle */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-8">
-                  <div className="bg-white rounded-full px-8 py-4 shadow-lg">
-                    <p className="text-sm font-semibold text-gray-900">Exclusive Brands</p>
-                    <p className="text-xs text-gray-600">Top Industry Players Trust DealerDistributors</p>
-                  </div>
+              {/* Dynamic Hero Slider */}
+              <HomeSlider />
+
+              {/* Exclusive Brands Info below slider */}
+              <div className="text-center mt-[-20px] mb-8">
+                <div className="inline-block bg-white rounded-full px-8 py-3 shadow-lg border border-gray-100">
+                  <p className="text-sm font-semibold text-gray-900">Exclusive Brands</p>
+                  <p className="text-xs text-gray-600">Top Industry Players Trust DealerDistributors</p>
                 </div>
               </div>
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="col-span-3 transform translate-x-[20px]">
+            <div className="col-span-3 transform translate-x-[70px] -translate-y-[10px]">
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
