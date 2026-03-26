@@ -20,9 +20,9 @@ const HeroSlider = () => {
   }, [emblaApi]);
 
   return (
-    <div className="relative flex flex-col items-center my-4 lg:my-8 -translate-y-9">
+    <div className="relative flex flex-col items-center my-4 lg:my-8 lg:-translate-y-9">
       {/* Wide rectangular slider — full column width, height matches side cards */}
-      <div className="w-full h-[420px] md:h-[500px] lg:h-[580px] xl:h-[600px] mx-auto -mx-[6px] rounded-xl overflow-hidden shadow-2xl">
+      <div className="w-full h-[420px] md:h-[500px] lg:h-[580px] xl:h-[600px] mx-auto lg:-mx-[6px] rounded-xl overflow-hidden shadow-2xl">
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex w-full h-full">
             {heroImages.map((image, index) => (
