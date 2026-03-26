@@ -21,8 +21,8 @@ const HeroSlider = () => {
 
   return (
     <div className="relative flex flex-col items-center my-4 lg:my-8">
-      {/* Responsive circular slider */}
-      <div className="w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] lg:w-[560px] lg:h-[560px] xl:w-[640px] xl:h-[640px] mx-auto rounded-full bg-gradient-to-br from-[#4C3F91] to-[#2C3E95] flex items-center justify-center overflow-hidden shadow-2xl border-4 border-white">
+      {/* Responsive circular slider — fluid, never overflows its column */}
+      <div className="w-full aspect-square max-w-[260px] sm:max-w-[320px] md:max-w-[440px] lg:max-w-[500px] xl:max-w-[540px] mx-auto rounded-full bg-gradient-to-br from-[#4C3F91] to-[#2C3E95] flex items-center justify-center overflow-hidden shadow-2xl border-4 border-white">
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex w-full h-full">
             {heroImages.map((image, index) => (

@@ -68,7 +68,7 @@ const Home = () => {
             </div>
 
             {/* Center - Hero Content */}
-            <div className="lg:col-span-6 text-center">
+            <div className="lg:col-span-6 text-center overflow-hidden">
               {/* Dynamic Hero Slider (Circular) */}
               <HeroSlider />
             </div>
