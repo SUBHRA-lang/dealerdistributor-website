@@ -149,7 +149,16 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {distributors.map((distributor) => (
-              <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card key={distributor.id} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                {/* Product image banner at top of card */}
+                <div className="w-full h-[160px] overflow-hidden bg-gray-100">
+                  <img
+                    src={distributor.productImage}
+                    alt={`${distributor.name} product`}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#f0fdf4)'; }}
+                  />
+                </div>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
                     <img
