@@ -323,7 +323,7 @@ export const blogPosts = [
     id: 5,
     title: 'Trends in the Indian Pharmaceutical Distribution Market',
     excerpt: 'The pharma sector is undergoing a digital transformation. Discover the latest trends in drug distribution...',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?w=400&h=250&fit=crop',
+    image: '/assets/blog/pharma-distribution.png',
     date: '2025-01-15',
     author: 'Pharma Expert',
     category: 'Insights'
@@ -332,7 +332,7 @@ export const blogPosts = [
     id: 6,
     title: 'Future of E-commerce Logistics in Rural India',
     excerpt: 'Reaching the last mile in rural India is the next big challenge for e-commerce companies...',
-    image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?w=400&h=250&fit=crop',
+    image: '/assets/blog/rural-ecommerce.png',
     date: '2025-01-05',
     author: 'Tech Team',
     category: 'Insights'
@@ -341,7 +341,7 @@ export const blogPosts = [
     id: 7,
     title: 'Sustainable Packaging: A New Standard for Distribution',
     excerpt: 'Eco-friendly packaging is no longer optional. Learn how to implement green practices in your supply chain...',
-    image: 'https://images.unsplash.com/photo-1591336445984-750d4eb8ba0b?w=400&h=250&fit=crop',
+    image: '/assets/blog/sustainable-packaging.png',
     date: '2024-12-20',
     author: 'Sustainability Team',
     category: 'Insights'
