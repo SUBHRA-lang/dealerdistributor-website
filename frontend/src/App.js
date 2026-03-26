@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -19,9 +19,17 @@ import Feedback from "./pages/Feedback";
 import Sitemap from "./pages/Sitemap";
 import Terms from "./pages/Terms";
 import { Toaster } from "./components/ui/toaster";
+import PopupModal from "./components/PopupModal";
 
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowPopup(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -48,6 +56,7 @@ function App() {
         </Routes>
         <Footer />
         <Toaster />
+        {showPopup && <PopupModal onClose={() => setShowPopup(false)} />}
       </BrowserRouter>
     </div>
   );

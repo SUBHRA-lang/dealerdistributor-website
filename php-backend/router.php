@@ -92,6 +92,10 @@ if ($uri === 'callback') {
     require 'callback.php';
     exit;
 }
+if ($uri === 'popup-inquiry') {
+    require 'popup-inquiry.php';
+    exit;
+}
 
 // Default: 404
 http_response_code(404);

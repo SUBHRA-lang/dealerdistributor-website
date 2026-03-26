@@ -53,6 +53,11 @@ export const callbackAPI = {
   submit: (data) => axios.post(`${API}/callback`, data)
 };
 
+// Popup Inquiry API
+export const popupAPI = {
+  submitInquiry: (data) => axios.post(`${API}/popup-inquiry`, data)
+};
+
 export default {
   categories: categoriesAPI,
   distributors: distributorsAPI,
@@ -62,5 +67,6 @@ export default {
   contact: contactAPI,
   newsletter: newsletterAPI,
   auth: authAPI,
-  callback: callbackAPI
+  callback: callbackAPI,
+  popup: popupAPI
 };
