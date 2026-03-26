@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h3>
             <p className="text-gray-300 mb-6">For Exclusive Updates, Latest Trends, and Exciting Business Opportunities!</p>
-            <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md mx-auto">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"

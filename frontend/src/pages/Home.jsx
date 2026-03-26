@@ -10,6 +10,7 @@ import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
 import HomeSlider from '../components/HomeSlider';
+import HeroSlider from '../components/HeroSlider';
 
 const Home = () => {
   const [lookingFor, setLookingFor] = useState('distributor');
@@ -58,38 +59,22 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-white to-gray-50 py-16">
+      <section className="bg-gradient-to-r from-white to-gray-50 py-8 lg:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-12 gap-8">
-            {/* Left Sidebar - Categories */}
-            <div className="col-span-3 transform -translate-y-[10px] -translate-x-[70px]">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
+            {/* Left Sidebar - Categories (only on large screens) */}
+            <div className="hidden lg:block lg:col-span-3">
               <CategorySidebar />
             </div>
 
             {/* Center - Hero Content */}
-            <div className="col-span-6">
-              <div className="text-center mb-10">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                  The Launchpad for Your Business
-                  <br />
-                  <span className="text-[#2C3E95]">Expansion and Entrepreneurial Success!</span>
-                </h1>
-              </div>
-
-              {/* Dynamic Hero Slider */}
-              <HomeSlider />
-
-              {/* Exclusive Brands Info below slider */}
-              <div className="text-center mt-[-20px] mb-8">
-                <div className="inline-block bg-white rounded-full px-8 py-3 shadow-lg border border-gray-100">
-                  <p className="text-sm font-semibold text-gray-900">Exclusive Brands</p>
-                  <p className="text-xs text-gray-600">Top Industry Players Trust DealerDistributors</p>
-                </div>
-              </div>
+            <div className="lg:col-span-6 text-center">
+              {/* Dynamic Hero Slider (Circular) */}
+              <HeroSlider />
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="col-span-3 transform translate-x-[70px] -translate-y-[10px]">
+            <div className="lg:col-span-3">
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
@@ -144,7 +129,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Banner Slider Section */}
+
+
+      {/* Banner Slider Section (Home Slider) */}
       <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
           <HomeSlider />

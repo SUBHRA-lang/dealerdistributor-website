@@ -60,23 +60,23 @@ export const HomeSlider = () => {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {banners.map((banner, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0 relative h-[400px] md:h-[500px] lg:h-[600px]">
+            <div key={index} className="flex-[0_0_100%] min-w-0 relative h-[220px] sm:h-[300px] md:h-[420px] lg:h-[520px]">
               <img 
                 src={banner.image} 
                 alt={banner.title}
                 className="w-full h-full object-cover"
               />
               {/* Overlay with Text content - matching DealerDistributors style */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-12 md:px-24">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center px-6 sm:px-10 md:px-16 lg:px-24">
                 <div className="max-w-xl text-white space-y-6">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight drop-shadow-lg">
+                  <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight drop-shadow-lg">
                     {banner.title}
                   </h2>
-                  <p className="text-lg md:text-xl text-white/90 font-medium drop-shadow-md">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-medium drop-shadow-md hidden sm:block">
                     {banner.subtitle}
                   </p>
                   <Link to={banner.link} className="inline-block pt-4">
-                    <Button className="bg-[#FF6B2C] hover:bg-[#e55a1f] text-white py-6 px-10 rounded-full text-lg font-black shadow-xl scale-100 hover:scale-105 transition-all">
+                    <Button className="bg-[#FF6B2C] hover:bg-[#e55a1f] text-white py-3 px-6 sm:py-5 sm:px-8 lg:py-6 lg:px-10 rounded-full text-sm sm:text-base lg:text-lg font-black shadow-xl scale-100 hover:scale-105 transition-all">
                       {banner.cta}
                     </Button>
                   </Link>

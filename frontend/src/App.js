@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import PostRequirement from "./pages/PostRequirement";
 import SignIn from "./pages/SignIn";
 import Join from "./pages/Join";
+import Categories from "./pages/Categories";
 import Testimonials from "./pages/Testimonials";
 import RequestCallback from "./pages/RequestCallback";
 import Feedback from "./pages/Feedback";
@@ -42,6 +43,7 @@ function App() {
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/category/:slug" element={<Distributors />} />
         </Routes>
         <Footer />
