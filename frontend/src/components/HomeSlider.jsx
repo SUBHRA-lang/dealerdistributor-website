@@ -56,13 +56,13 @@ export const HomeSlider = () => {
   }, [emblaApi]);
 
   return (
-    <div className="relative overflow-hidden group rounded-3xl shadow-2xl bg-white mb-12">
+    <div className="relative overflow-hidden group rounded-3xl shadow-2xl bg-white mb-12 mx-4">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {banners.map((banner, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0 relative h-[220px] sm:h-[300px] md:h-[420px] lg:h-[520px]">
-              <img 
-                src={banner.image} 
+            <div key={index} className="flex-[0_0_100%] min-w-0 relative h-[168px] sm:h-[248px] md:h-[248px] lg:h-[348px]">
+              <img
+                src={banner.image}
                 alt={banner.title}
                 className="w-full h-full object-cover"
               />
@@ -89,9 +89,9 @@ export const HomeSlider = () => {
 
       {/* Navigation Buttons - Hidden by default, shown on hover */}
       <div className="absolute top-1/2 -translate-y-1/2 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Button 
-          variant="outline" 
-          size="icon" 
+        <Button
+          variant="outline"
+          size="icon"
           onClick={scrollPrev}
           className="rounded-full bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white hover:text-black w-12 h-12"
         >
@@ -99,9 +99,9 @@ export const HomeSlider = () => {
         </Button>
       </div>
       <div className="absolute top-1/2 -translate-y-1/2 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-        <Button 
-          variant="outline" 
-          size="icon" 
+        <Button
+          variant="outline"
+          size="icon"
           onClick={scrollNext}
           className="rounded-full bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white hover:text-black w-12 h-12"
         >
@@ -112,7 +112,7 @@ export const HomeSlider = () => {
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
         {banners.map((_, index) => (
-          <div 
+          <div
             key={index}
             className="w-3 h-3 rounded-full bg-white/30 backdrop-blur-sm cursor-pointer hover:bg-white/60 transition-colors"
             onClick={() => emblaApi && emblaApi.scrollTo(index)}

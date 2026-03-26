@@ -59,11 +59,11 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-white to-gray-50 py-8 lg:py-16">
+      <section className="bg-gray-50 py-8 lg:py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left Sidebar - Categories (only on large screens) */}
-            <div className="hidden lg:block lg:col-span-3">
+            <div className="hidden lg:block lg:col-span-3 -translate-x-5 -translate-y-2.5 mx-[10px]">
               <CategorySidebar />
             </div>
 
@@ -74,7 +74,7 @@ const Home = () => {
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 translate-x-5 -translate-y-2.5 mx-[6px]">
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
