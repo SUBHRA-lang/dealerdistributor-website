@@ -39,7 +39,7 @@ const CategorySidebar = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full flex flex-col">
-      <h3 className="text-lg font-bold text-gray-900 mb-3">TOP CATEGORIES</h3>
+      <h3 className="text-lg font-bold text-gray-900 mb-3 pl-10">TOP CATEGORIES</h3>
 
       {/* Scrollable list — max-h ensures it scrolls once it exceeds the fixed height */}
       <div className="overflow-y-auto max-h-[460px]">

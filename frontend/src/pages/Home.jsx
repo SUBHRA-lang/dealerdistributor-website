@@ -63,18 +63,18 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left Sidebar - Categories (only on large screens) */}
-            <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px]">
+            <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pr-[35px]">
               <CategorySidebar />
             </div>
 
             {/* Center - Hero Content */}
-            <div className="lg:col-span-6 text-center overflow-hidden">
+            <div className="lg:col-span-6 text-center">
               {/* Dynamic Hero Slider (Circular) */}
               <HeroSlider />
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px]">
+            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px]">
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
