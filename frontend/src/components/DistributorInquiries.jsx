@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { distributorInquiries } from '../data/mock-data';
+import ProposalModal from './ProposalModal';
 
 const DistributorInquiries = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedInquiry, setSelectedInquiry] = useState(null);
+
+  const handleSendProposal = (inquiry) => {
+    setSelectedInquiry(inquiry);
+    setIsModalOpen(true);
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -66,13 +75,16 @@ const DistributorInquiries = () => {
                 </p>
 
                 {/* Action Button */}
-                <Button className="w-full bg-[#F35B04] hover:bg-[#d94d03] text-white font-bold rounded-full py-6 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 group-hover:scale-[1.02]">
+                <Button 
+                  onClick={() => handleSendProposal(inquiry)}
+                  className="w-full bg-[#F35B04] hover:bg-[#d94d03] text-white font-bold rounded-full py-6 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 group-hover:scale-[1.02]"
+                >
                   Send Proposal
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </CardContent>
               
-              {/* Date Badge (Hidden by default, shown on hover?) -> Let's keep it subtle at top right */}
+              {/* Date Badge */}
               <div className="absolute top-2 right-12 text-[9px] font-semibold text-gray-300 pointer-events-none">
                 {inquiry.date}
               </div>
@@ -80,6 +92,12 @@ const DistributorInquiries = () => {
           ))}
         </div>
       </div>
+
+      <ProposalModal 
+        isOpen={isModalOpen} 
+        onOpenChange={setIsModalOpen} 
+        inquiryData={selectedInquiry}
+      />
     </section>
   );
 };

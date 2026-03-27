@@ -104,6 +104,10 @@ if ($uri === 'forgot_password.php' || $uri === 'forgot-password' || $uri === 'fo
     require 'forgot_password.php';
     exit;
 }
+if ($uri === 'send_proposal.php' || $uri === 'send-proposal' || $uri === 'send_proposal') {
+    require 'send_proposal.php';
+    exit;
+}
 
 // Default: 404
 http_response_code(404);
