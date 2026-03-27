@@ -174,25 +174,52 @@ const Distributors = () => {
               <Grid className="w-5 h-5 text-[#2C3E95]" />
               Browse by Industrial Sector
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-              {categories.slice(0, 16).map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.name)}
-                  className={`p-4 rounded-xl border transition-all duration-300 group hover:border-[#2C3E95] hover:shadow-md ${
-                    selectedCategory === cat.name ? 'border-[#2C3E95] bg-blue-50 text-[#2C3E95]' : 'border-gray-100 bg-white text-gray-600'
-                  }`}
-                >
-                  <div className={`w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-lg group-hover:bg-[#2C3E95] group-hover:text-white transition-colors ${
-                    selectedCategory === cat.name ? 'bg-[#2C3E95] text-white' : 'bg-gray-50'
-                  }`}>
-                    {/* Simplified icon logic for mock categories */}
-                    <Grid className="w-5 h-5" />
-                  </div>
-                  <span className="text-xs font-semibold block leading-tight">{cat.name}</span>
-                </button>
-              ))}
-            </div>
+
+            {/* Category image map */}
+            {(() => {
+              const categoryImages = {
+                'Food & Beverage':                  'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=80&h=80&fit=crop&auto=format',
+                'FMCG':                             'https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop&auto=format',
+                'Health & Beauty':                  'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop&auto=format',
+                'Pharmaceuticals':                  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=80&h=80&fit=crop&auto=format',
+                'Apparel & Fashion':                'https://images.unsplash.com/photo-1445205170230-053b83016050?w=80&h=80&fit=crop&auto=format',
+                'Chemicals':                        'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=80&h=80&fit=crop&auto=format',
+                'Home Supplies':                    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop&auto=format',
+                'Construction & Real Estate':       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format',
+                'Electronics & Electrical Supplies':'https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&auto=format',
+                'Agriculture':                      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=80&h=80&fit=crop&auto=format',
+                'Automobile':                       'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=80&h=80&fit=crop&auto=format',
+                'Packaging & Paper':                'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=80&h=80&fit=crop&auto=format',
+                'Hospital & Medical Supplies':      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&h=80&fit=crop&auto=format',
+                'Gifts & Crafts':                   'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=80&h=80&fit=crop&auto=format',
+                'Consumer Electronics':             'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=80&h=80&fit=crop&auto=format',
+                'Pipes, Tubes & Fittings':          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop&auto=format',
+                'Industrial Supplies':              'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format',
+              };
+              return (
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                  {categories.slice(0, 16).map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedCategory(cat.name)}
+                      className={`p-3 rounded-xl border transition-all duration-300 group hover:border-[#2C3E95] hover:shadow-md ${
+                        selectedCategory === cat.name ? 'border-[#2C3E95] bg-blue-50 text-[#2C3E95]' : 'border-gray-100 bg-white text-gray-600'
+                      }`}
+                    >
+                      <div className="w-12 h-12 mx-auto mb-2 rounded-lg overflow-hidden shadow-sm">
+                        <img
+                          src={categoryImages[cat.name] || `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format`}
+                          alt={cat.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background='#e0e7ff'; }}
+                        />
+                      </div>
+                      <span className="text-xs font-semibold block leading-tight">{cat.name}</span>
+                    </button>
+                  ))}
+                </div>
+              );
+            })()}
           </CardContent>
         </Card>
 

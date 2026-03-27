@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import CategorySidebar from '../components/CategorySidebar';
-import { videoTestimonials, distributors as mockDistributors, testimonials as mockTestimonials, blogPosts as mockBlogPosts } from '../data/mock-data';
+import { videoTestimonials, distributors as mockDistributors, testimonials as mockTestimonials, blogPosts as mockBlogPosts, exclusiveBrands } from '../data/mock-data';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
@@ -59,7 +59,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-8 lg:py-16">
+      <section className="bg-gray-50 py-6 lg:py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left Sidebar - Categories (only on large screens) */}
@@ -220,6 +220,47 @@ const Home = () => {
                 View More Opportunities
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Exclusive Brands ── */}
+      <section className="py-14 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Exclusive Brands</h2>
+            <p className="text-gray-500 mt-1 text-sm">Top industry players trust DealerDistributors</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {exclusiveBrands.map((brand) => (
+              <Link to="/distributors" key={brand.id}
+                className="bg-white rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 p-4 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 group">
+                {/* Logo + Category badge row */}
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 rounded-xl overflow-hidden border border-gray-100 flex-shrink-0 shadow-sm">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background=brand.color+'22'; }}
+                    />
+                  </div>
+                  <span
+                    className="text-[10px] font-bold px-2 py-0.5 rounded-full leading-tight"
+                    style={{ backgroundColor: brand.color + '20', color: brand.color }}
+                  >
+                    {brand.category}
+                  </span>
+                </div>
+                {/* Name */}
+                <p className="font-bold text-gray-900 text-sm leading-snug group-hover:text-[#2C3E95] transition-colors line-clamp-1">{brand.name}</p>
+                {/* Investment */}
+                <div>
+                  <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Investment price range</p>
+                  <p className="text-xs font-bold text-gray-700 mt-0.5">{brand.investment}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

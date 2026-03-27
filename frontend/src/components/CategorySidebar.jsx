@@ -42,7 +42,7 @@ const CategorySidebar = () => {
       <h3 className="text-lg font-bold text-gray-900 mb-3 pl-10">TOP CATEGORIES</h3>
 
       {/* Scrollable list — max-h ensures it scrolls once it exceeds the fixed height */}
-      <div className="overflow-y-auto max-h-[460px]">
+      <div className="overflow-y-auto max-h-[min(46vh,440px)]">
         {categoriesList.map((category) => {
           const IconComponent = LucideIcons[category.icon] || LucideIcons.Package;
           return (
