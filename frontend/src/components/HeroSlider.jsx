@@ -39,12 +39,6 @@ const HeroSlider = () => {
       </div>
 
       {/* Exclusive Brands badge */}
-      <div className="mt-4 lg:mt-6">
-        <div className="bg-white rounded-full px-6 py-3 shadow-lg border border-gray-100">
-          <p className="text-sm font-semibold text-gray-900 text-center">Exclusive Brands</p>
-          <p className="text-xs text-gray-600 text-center">Top Industry Players Trust DealerDistributors</p>
-        </div>
-      </div>
     </div>
   );
 };

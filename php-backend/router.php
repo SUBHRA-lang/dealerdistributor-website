@@ -96,6 +96,14 @@ if ($uri === 'popup-inquiry') {
     require 'popup-inquiry.php';
     exit;
 }
+if ($uri === 'expert_inquiry.php' || $uri === 'expert_inquiry') {
+    require 'expert_inquiry.php';
+    exit;
+}
+if ($uri === 'forgot_password.php' || $uri === 'forgot-password' || $uri === 'forgot_password') {
+    require 'forgot_password.php';
+    exit;
+}
 
 // Default: 404
 http_response_code(404);

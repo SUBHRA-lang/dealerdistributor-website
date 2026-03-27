@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import PostRequirement from "./pages/PostRequirement";
 import SignIn from "./pages/SignIn";
 import Join from "./pages/Join";
+import ForgotPassword from "./pages/ForgotPassword";
 import Categories from "./pages/Categories";
 import Testimonials from "./pages/Testimonials";
 import RequestCallback from "./pages/RequestCallback";
@@ -46,6 +47,7 @@ function App() {
           <Route path="/post-requirement" element={<PostRequirement />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/request-callback" element={<RequestCallback />} />
           <Route path="/feedback" element={<Feedback />} />

@@ -68,6 +68,22 @@ const PostRequirement = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleReset = () => {
+    setFormData({
+      businessType: '',
+      category: '',
+      productName: '',
+      companyName: '',
+      contactPerson: '',
+      email: '',
+      phone: '',
+      location: '',
+      investment: '',
+      territories: '',
+      description: ''
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
@@ -255,7 +271,7 @@ const PostRequirement = () => {
                   >
                     {submitting ? 'Submitting...' : 'Submit Requirement'}
                   </Button>
-                  <Button type="button" variant="outline" size="lg" className="rounded-full px-8">
+                  <Button type="button" variant="outline" size="lg" className="rounded-full px-8" onClick={handleReset}>
                     Reset
                   </Button>
                 </div>

@@ -433,3 +433,102 @@ export const videoTestimonials = [
   { id: 2, youtubeId: 'I6hENYZiRoY', thumbnail: 'https://img.youtube.com/vi/I6hENYZiRoY/maxresdefault.jpg', title: 'Abhinav Pandey (Owner)' },
   { id: 3, youtubeId: 'vLV9-RqOjUE', thumbnail: 'https://img.youtube.com/vi/vLV9-RqOjUE/maxresdefault.jpg', title: 'Ms. Urmila Meghnani (Owner)' }
 ];
+
+export const distributorInquiries = [
+  {
+    id: 1,
+    initial: 'G',
+    name: 'GE***he***ca',
+    category: 'Health & Beauty',
+    categoryColor: '#FDF2E9',
+    location: 'Gaya, Bihar',
+    investment: '₹ 1 Lac - 5 Lac',
+    experience: 'Yes',
+    description: 'Looking for distributorship opportunities in the health and beauty sector with a focus on organic products.',
+    date: '27 Mar, 2026'
+  },
+  {
+    id: 2,
+    initial: 'N',
+    name: 'NI***tr***es',
+    category: 'Food & Beverage',
+    categoryColor: '#E8F8F5',
+    location: 'Indore, Madhya Pradesh',
+    investment: '₹ 2 Lac - 5 Lac',
+    experience: '10 years',
+    description: 'Interested in expanding my portfolio with premium food and beverage brands in Central India.',
+    date: '26 Mar, 2026'
+  },
+  {
+    id: 3,
+    initial: 'A',
+    name: 'AR***el***on',
+    category: 'Electronics & Electrical',
+    categoryColor: '#EBF5FB',
+    location: 'Surat, Gujarat',
+    investment: '₹ 5 Lac - 10 Lac',
+    experience: '5 years',
+    description: 'Seeking reliable partners for electrical supplies and consumer electronics distribution in Gujarat.',
+    date: '25 Mar, 2026'
+  },
+  {
+    id: 4,
+    initial: 'S',
+    name: 'SH***iv***am',
+    category: 'FMCG',
+    categoryColor: '#FEF9E7',
+    location: 'Lucknow, Uttar Pradesh',
+    investment: '₹ 1 Lac - 2 Lac',
+    experience: 'New Entry',
+    description: 'Motivated entrepreneur looking to start a new distributorship in the fast-moving consumer goods sector.',
+    date: '24 Mar, 2026'
+  },
+  {
+    id: 5,
+    initial: 'M',
+    name: 'MA***tr***ix',
+    category: 'Agriculture',
+    categoryColor: '#F4F6F7',
+    location: 'Chandigarh, Punjab',
+    investment: '₹ 2 Lac - 5 Lac',
+    experience: '15 years',
+    description: 'Experienced distributor looking for innovative agricultural products and seeds for the Punjab region.',
+    date: '23 Mar, 2026'
+  },
+  {
+    id: 6,
+    initial: 'P',
+    name: 'PR***im***ex',
+    category: 'Home Supplies',
+    categoryColor: '#FBEEE6',
+    location: 'Pune, Maharashtra',
+    investment: '₹ 1 Lac - 3 Lac',
+    experience: '8 years',
+    description: 'Expanding our home supplies distribution network and looking for high-quality household products.',
+    date: '22 Mar, 2026'
+  },
+  {
+    id: 7,
+    initial: 'R',
+    name: 'RA***ja***ni',
+    category: 'Apparel & Fashion',
+    categoryColor: '#F5EEF8',
+    location: 'Jaipur, Rajasthan',
+    investment: '₹ 5 Lac - 15 Lac',
+    experience: '12 years',
+    description: 'Interested in designer apparel and ethnic wear distributorship for the Rajasthan market.',
+    date: '21 Mar, 2026'
+  },
+  {
+    id: 8,
+    initial: 'V',
+    name: 'VI***ka***sh',
+    category: 'Industrial Supplies',
+    categoryColor: '#F2F3F4',
+    location: 'Hyderabad, Telangana',
+    investment: '₹ 10 Lac - 20 Lac',
+    experience: '20+ years',
+    description: 'Established industrial supplier looking for new partnerships in heavy machinery and tools.',
+    date: '20 Mar, 2026'
+  }
+];

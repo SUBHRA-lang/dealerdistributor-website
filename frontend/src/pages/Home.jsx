@@ -11,6 +11,8 @@ import { Label } from '../components/ui/label';
 import { distributorsAPI, testimonialsAPI, blogAPI } from '../services/api';
 import HomeSlider from '../components/HomeSlider';
 import HeroSlider from '../components/HeroSlider';
+import AskExpertSection from '../components/AskExpertSection';
+import DistributorInquiries from "../components/DistributorInquiries";
 
 const Home = () => {
   const [lookingFor, setLookingFor] = useState('distributor');
@@ -59,7 +61,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-6 lg:py-6">
+      <section className="bg-gray-50 pt-6 pb-2">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left Sidebar - Categories (only on large screens) */}
@@ -132,7 +134,7 @@ const Home = () => {
 
 
       {/* Banner Slider Section (Home Slider) */}
-      <section className="pt-8 pb-4 bg-white">
+      <section className="pt-0 pb-4 bg-white">
         <div className="container mx-auto px-4">
           <HomeSlider />
         </div>
@@ -264,6 +266,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Ask Our Experts ── */}
+      <AskExpertSection />
+
+      {/* ── Distributor Inquiries ── */}
+      <DistributorInquiries />
 
       {/* Success Stories/Testimonials */}
       <section className="pt-8 pb-8 bg-gradient-to-br from-blue-50 to-purple-50">
