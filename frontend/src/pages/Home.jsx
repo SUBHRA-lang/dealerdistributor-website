@@ -132,14 +132,14 @@ const Home = () => {
 
 
       {/* Banner Slider Section (Home Slider) */}
-      <section className="py-8 bg-white">
+      <section className="pt-8 pb-4 bg-white">
         <div className="container mx-auto px-4">
           <HomeSlider />
         </div>
       </section>
 
       {/* Featured Distributorship Opportunities */}
-      <section className="py-16 bg-white">
+      <section className="pt-4 pb-6 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -156,7 +156,7 @@ const Home = () => {
                     src={distributor.productImage}
                     alt={`${distributor.name} product`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#f0fdf4)'; }}
+                    onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.style.background = 'linear-gradient(135deg,#e0e7ff,#f0fdf4)'; }}
                   />
                 </div>
                 <CardContent className="p-6">
@@ -225,7 +225,7 @@ const Home = () => {
       </section>
 
       {/* ── Exclusive Brands ── */}
-      <section className="py-14 bg-gray-50">
+      <section className="pt-6 pb-6 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Exclusive Brands</h2>
@@ -242,7 +242,7 @@ const Home = () => {
                       src={brand.logo}
                       alt={brand.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background=brand.color+'22'; }}
+                      onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.style.background = brand.color + '22'; }}
                     />
                   </div>
                   <span
@@ -266,7 +266,7 @@ const Home = () => {
       </section>
 
       {/* Success Stories/Testimonials */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="pt-8 pb-8 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
@@ -305,7 +305,7 @@ const Home = () => {
       </section>
 
       {/* Video Testimonials */}
-      <section className="py-16 bg-white">
+      <section className="pt-8 pb-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Video Testimonials</h2>
@@ -331,7 +331,7 @@ const Home = () => {
       </section>
 
       {/* Blog Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="pt-8 pb-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>

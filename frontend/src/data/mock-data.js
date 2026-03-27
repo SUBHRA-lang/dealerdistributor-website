@@ -190,6 +190,40 @@ export const distributors = [
     location: 'Mohali, Punjab',
     experience: '2 years',
     territories: ['Punjab', 'Haryana', 'Himachal Pradesh']
+  },
+  {
+    id: 11,
+    type: 'distributor',
+    name: 'Vardhman Textiles Ltd.',
+    category: 'Apparel & Fashion',
+    categoryId: 4,
+    logo: 'https://ui-avatars.com/api/?name=Vardhman+Textiles&background=4F46E5&color=fff&size=200&bold=true',
+    productImage: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&h=400&fit=crop&q=80',
+    investmentRange: '₹ 10Lac - ₹20Lac',
+    established: 1973,
+    products: ['Premium Cotton Yarn', 'Processed Fabric', 'Sewing Thread', 'Poly Cotton Blends'],
+    phone: '08071793082',
+    description: 'One of the largest textile manufacturers in India, leading the industry with quality yarn and fabrics.',
+    location: 'Ludhiana, Punjab',
+    experience: '50+ years',
+    territories: ['North India', 'South India', 'International']
+  },
+  {
+    id: 12,
+    type: 'distributor',
+    name: 'Surya Roshni Limited',
+    category: 'Electronics & Electrical Supplies',
+    categoryId: 8,
+    logo: 'https://static.cdnlogo.com/logos/s/44/surya-roshni_800.png',
+    productImage: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&h=400&fit=crop&q=80',
+    investmentRange: '₹ 5Lac - ₹15Lac',
+    established: 1973,
+    products: ['LED Lighting Solutions', 'ERW Steel Pipes', 'Home Appliances', 'PVC Pipes'],
+    phone: '08758655303',
+    description: 'Renowned brand in lighting, steel pipes, and home appliances with a pan-India presence.',
+    location: 'Bahadurgarh, Haryana',
+    experience: '50+ years',
+    territories: ['All India']
   }
 ];
 
