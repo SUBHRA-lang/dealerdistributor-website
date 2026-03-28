@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { Search, ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import {
@@ -13,13 +13,32 @@ import { categories } from '../data/mock-data';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const isDistributorsPage = location.pathname.includes('/distributors');
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Sync header search state with URL when on distributors page
+  React.useEffect(() => {
+    if (isDistributorsPage) {
+      setSearchTerm(searchParams.get('q') || '');
+      setSelectedCategory(searchParams.get('category') || 'all');
+    } else {
+      setSearchTerm('');
+      setSelectedCategory('all');
+    }
+  }, [searchParams, isDistributorsPage]);
+
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search?q=${searchTerm}&category=${selectedCategory}`);
+    const queryParams = new URLSearchParams();
+    if (searchTerm) queryParams.append('q', searchTerm);
+    if (selectedCategory && selectedCategory !== 'all') queryParams.append('category', selectedCategory);
+    
+    navigate(`/distributors?${queryParams.toString()}`);
     setMobileMenuOpen(false);
   };
 
@@ -50,7 +69,7 @@ const Header = () => {
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
                   {categories.map(cat => (
-                    <SelectItem key={cat.id} value={cat.slug}>{cat.name}</SelectItem>
+                    <SelectItem key={cat.id} value={cat.name}>{cat.name}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>

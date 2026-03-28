@@ -11,13 +11,24 @@ import { distributors as mockDistributors, categories as mockCategories } from '
 
 const Distributors = () => {
   const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'all';
+  const initialSearch = searchParams.get('q') || '';
+
   const { slug } = useParams();
   const location = useLocation();
   const isFranchise = location.pathname.includes('franchise');
   
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortBy, setSortBy] = useState('newest');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
+
+  // Sync state if URL search params change
+  useEffect(() => {
+    const q = searchParams.get('q') || '';
+    const c = searchParams.get('category') || 'all';
+    setSearchQuery(q);
+    setSelectedCategory(c);
+  }, [searchParams]);
   const [distributors, setDistributors] = useState([]);
   const [allDistributors, setAllDistributors] = useState([]);
   const [categories, setCategories] = useState([]);
