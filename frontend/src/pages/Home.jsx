@@ -61,9 +61,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-8 lg:py-16">
+      <section className="bg-gray-50 pt-4 pb-8 lg:pt-8 lg:pb-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 relative z-10">
             {/* Left Sidebar - Categories (only on large screens) */}
             <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pr-[35px]">
               <CategorySidebar />
@@ -76,9 +76,9 @@ const Home = () => {
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px]">
-              <Card className="shadow-lg">
-                <CardContent className="p-6">
+            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px] flex flex-col h-[195px] sm:h-[275px] md:h-[435px] lg:h-[calc(min(48vh,480px)-5px)] xl:h-[555px]">
+              <Card className="shadow-lg flex-1 flex flex-col">
+                <CardContent className="p-6 flex flex-col h-full">
                   <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
                   <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
 
@@ -99,7 +99,19 @@ const Home = () => {
                     </Button>
                   </Link>
 
-                  <div className="text-center pt-4 border-t">
+                  {/* Stats Card inserted into gap */}
+                  <div className="flex flex-col justify-center items-center flex-1 my-2">
+                    <p className="text-sm text-gray-600 mb-1 lg:mb-2">ALL CATEGORIES</p>
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2C3E95]">Total 1.2 Lakh</h2>
+                    <p className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900">Distributors</p>
+                    <div className="flex justify-center gap-1 mt-2 lg:mt-4">
+                      {[1, 2, 3, 4, 5, 6].map((i) => (
+                        <div key={i} className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="text-center mt-auto pt-4 border-t">
                     <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
                       <p className="text-sm font-semibold text-gray-900 mb-2">Supercharge Your Business Growth</p>
                       <p className="text-xs text-gray-600">Unlock Limitless Opportunities!</p>
@@ -109,20 +121,6 @@ const Home = () => {
                         Post Your Requirement
                       </Button>
                     </Link>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Stats Card */}
-              <Card className="mt-4 shadow-lg">
-                <CardContent className="p-6 text-center">
-                  <p className="text-sm text-gray-600 mb-2">ALL CATEGORIES</p>
-                  <h2 className="text-3xl font-bold text-[#2C3E95]">Total 1.2 Lakh</h2>
-                  <p className="text-lg font-semibold text-gray-900">Distributors</p>
-                  <div className="flex justify-center gap-1 mt-4">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
-                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -198,8 +196,8 @@ const Home = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="flex-1"
                       onClick={(e) => {
                         e.stopPropagation();

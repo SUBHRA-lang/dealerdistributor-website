@@ -38,11 +38,11 @@ const CategorySidebar = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full flex flex-col">
-      <h3 className="text-lg font-bold text-gray-900 mb-3 pl-10">TOP CATEGORIES</h3>
+    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full flex flex-col h-[200px] sm:h-[280px] md:h-[440px] lg:h-[min(48vh,480px)] xl:h-[560px]">
+      <h3 className="text-lg font-bold text-gray-900 mb-3 pl-2">TOP CATEGORIES</h3>
 
       {/* Scrollable list — max-h ensures it scrolls once it exceeds the fixed height */}
-      <div className="overflow-y-auto max-h-[min(46vh,440px)]">
+      <div className="overflow-y-auto flex-1 pr-2">
         {categoriesList.map((category) => {
           const IconComponent = LucideIcons[category.icon] || LucideIcons.Package;
           return (
