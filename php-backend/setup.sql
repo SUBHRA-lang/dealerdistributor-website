@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `distributors` (
   `location`         VARCHAR(255),
   `experience`       VARCHAR(100),
   `territories`      TEXT  COMMENT 'JSON array of territory names',
+  `product_image`    TEXT,
   `is_featured`      TINYINT(1) DEFAULT 0,
   `status`           VARCHAR(50) DEFAULT 'active',
   `created_at`       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

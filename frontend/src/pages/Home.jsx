@@ -61,49 +61,45 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gray-50 pt-6 pb-2">
+      <section className="bg-gray-50 py-8 lg:py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-12 lg:items-stretch gap-6 lg:gap-8">
-
-            {/* LEFT — Category Sidebar */}
-            <div className="hidden lg:flex lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pr-[35px] mt-4 lg:order-1 flex-col">
-              <div className="h-full">
-                <CategorySidebar />
-              </div>
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8">
+            {/* Left Sidebar - Categories (only on large screens) */}
+            <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pr-[35px]">
+              <CategorySidebar />
             </div>
 
-            {/* CENTER — Hero Slider */}
-            <div className="lg:col-span-6 order-1 lg:order-2 flex flex-col">
+            {/* Center - Hero Content */}
+            <div className="lg:col-span-6 text-center">
+              {/* Dynamic Hero Slider (Circular) */}
               <HeroSlider />
             </div>
 
-            {/* RIGHT — What are you looking for + Stats */}
-            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px] mt-4 flex flex-col lg:order-3">
-              <Card className="shadow-lg flex-1 flex flex-col">
-                <CardContent className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
-                    <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
+            {/* Right Sidebar - What are you looking for */}
+            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px]">
+              <Card className="shadow-lg">
+                <CardContent className="p-6">
+                  <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
+                  <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
 
-                    <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-3 mb-6">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="distributor" id="distributor" />
-                        <Label htmlFor="distributor" className="cursor-pointer">Distributor</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="franchise" id="franchise" />
-                        <Label htmlFor="franchise" className="cursor-pointer">Franchise</Label>
-                      </div>
-                    </RadioGroup>
+                  <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-3 mb-6">
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="distributor" id="distributor" />
+                      <Label htmlFor="distributor" className="cursor-pointer">Distributor</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="franchise" id="franchise" />
+                      <Label htmlFor="franchise" className="cursor-pointer">Franchise</Label>
+                    </div>
+                  </RadioGroup>
 
-                    <Link to={lookingFor === 'franchise' ? '/franchises' : '/distributors'}>
-                      <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-4">
-                        {lookingFor === 'franchise' ? 'Looking for Franchises' : 'Looking for Distributors'}
-                      </Button>
-                    </Link>
-                  </div>
+                  <Link to={lookingFor === 'franchise' ? '/franchises' : '/distributors'}>
+                    <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-4">
+                      {lookingFor === 'franchise' ? 'Looking for Franchises' : 'Looking for Distributors'}
+                    </Button>
+                  </Link>
 
-                  <div className="text-center pt-4 border-t mt-auto">
+                  <div className="text-center pt-4 border-t">
                     <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
                       <p className="text-sm font-semibold text-gray-900 mb-2">Supercharge Your Business Growth</p>
                       <p className="text-xs text-gray-600">Unlock Limitless Opportunities!</p>
@@ -118,20 +114,19 @@ const Home = () => {
               </Card>
 
               {/* Stats Card */}
-              <Card className="mt-4 shadow-lg flex-shrink-0">
-                <CardContent className="px-6 py-[14px] text-center">
+              <Card className="mt-4 shadow-lg">
+                <CardContent className="p-6 text-center">
                   <p className="text-sm text-gray-600 mb-2">ALL CATEGORIES</p>
                   <h2 className="text-3xl font-bold text-[#2C3E95]">Total 1.2 Lakh</h2>
                   <p className="text-lg font-semibold text-gray-900">Distributors</p>
                   <div className="flex justify-center gap-1 mt-4">
                     {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
+                      <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </div>
-
           </div>
         </div>
       </section>
@@ -203,12 +198,17 @@ const Home = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <a href={`tel:${distributor.phone}`} className="flex-1">
-                      <Button variant="outline" className="w-full">
-                        <Phone className="w-4 h-4 mr-2" />
-                        Call
-                      </Button>
-                    </a>
+                    <Button 
+                      variant="outline" 
+                      className="flex-1"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = `tel:${distributor.phone}`;
+                      }}
+                    >
+                      <Phone className="w-4 h-4 mr-2" />
+                      Call
+                    </Button>
                     <Link to={`/distributor/${distributor.id}`} className="flex-1">
                       <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b]">
                         View Details
@@ -239,7 +239,7 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {exclusiveBrands.map((brand) => (
-              <Link to="/distributors" key={brand.id}
+              <Link to={`/distributor/${brand.distributorId}`} key={brand.id}
                 className="bg-white rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 p-4 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 group">
                 {/* Logo + Category badge row */}
                 <div className="flex items-center gap-3">

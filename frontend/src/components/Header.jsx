@@ -29,10 +29,16 @@ const Header = () => {
         {/* Top Bar */}
         <div className="flex items-center justify-between py-3 md:py-4">
           {/* Logo */}
-          <Link to="/" className="flex flex-col shrink-0">
-            <h1 className="text-lg md:text-2xl font-bold text-[#2C3E95] leading-tight">DealerDistributors.com</h1>
-            <p className="text-xs text-gray-600 hidden sm:block">Distributors • Franchises</p>
-          </Link>
+          <div className="flex flex-col shrink-0">
+            <Link to="/" className="text-lg md:text-2xl font-bold text-[#2C3E95] leading-tight hover:opacity-80 transition-opacity">
+              DealerDistributors.com
+            </Link>
+            <p className="text-xs text-gray-600 hidden sm:block">
+              <Link to="/distributors" className="hover:text-[#2C3E95] hover:underline transition-colors">Distributors</Link>
+              {' • '}
+              <Link to="/franchises" className="hover:text-[#2C3E95] hover:underline transition-colors">Franchises</Link>
+            </p>
+          </div>
 
           {/* Search Bar — hidden on small, shown on md+ */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl mx-6 lg:mx-8">

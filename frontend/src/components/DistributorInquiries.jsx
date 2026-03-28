@@ -20,9 +20,6 @@ const DistributorInquiries = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-3xl font-bold text-gray-900">Discover Distributors' Inquiries</h2>
-          <Button variant="link" className="text-[#2C3E95] font-semibold flex items-center gap-1">
-            View All <ArrowRight className="w-4 h-4" />
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

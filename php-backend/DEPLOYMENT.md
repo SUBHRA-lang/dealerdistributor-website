@@ -3,8 +3,8 @@
 ## 🚀 Quick Re-deploy (Latest Changes)
 To update the website with the new **Authentication** and **Forms** features:
 1. **Frontend**: `cd frontend`, set `.env` to production, `npm run build`, zip/upload `build/` contents to `public_html/`.
-2. **Backend**: Upload `php-backend/` files to `public_html/api/` (Override existing).
-3. **Database**: Run new `CREATE TABLE` commands in `php-backend/setup.sql` via phpMyAdmin.
+2. **Backend**: Upload `php-backend/` files (except `.env`) to `public_html/api/`. Your existing server `.env` will keep your credentials safe!
+3. **Database**: If you added new features, run any new `ALTER TABLE` commands in phpMyAdmin.
 
 ---
 
@@ -44,14 +44,15 @@ public_html/
 5. Go to **phpMyAdmin** → select your database → click **SQL** tab
 6. Paste the contents of `php-backend/setup.sql` → click **Go**
 
-### 2. Configure `db.php`
-Open `php-backend/db.php` and edit these 4 lines:
-```php
-$DB_NAME = 'cpanelusername_dealerdb';  // Your database name
-$DB_USER = 'cpanelusername_dbuser';    // Your DB username
-$DB_PASS = 'your_strong_password';     // Your DB password
-$DB_HOST = 'localhost';                // Keep as localhost
+### 2. Configure Database (.env)
+Instead of editing `db.php` directly, create a `.env` file in `public_html/api/` (you can use `.env.example` as a template):
+```env
+DB_HOST=localhost
+DB_NAME=cpanelusername_dealerdb
+DB_USER=cpanelusername_dbuser
+DB_PASS=your_strong_password
 ```
+This keeps your credentials separate from the code and prevents them from being overwritten during updates.
 
 ### 3. Build & Upload Frontend
 ```bash

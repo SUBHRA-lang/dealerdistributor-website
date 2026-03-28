@@ -15,6 +15,7 @@ import Join from "./pages/Join";
 import ForgotPassword from "./pages/ForgotPassword";
 import Categories from "./pages/Categories";
 import Testimonials from "./pages/Testimonials";
+import AdminLeads from "./pages/AdminLeads";
 import RequestCallback from "./pages/RequestCallback";
 import Feedback from "./pages/Feedback";
 import Sitemap from "./pages/Sitemap";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/admin/leads" element={<AdminLeads />} />
           <Route path="/category/:slug" element={<Distributors />} />
         </Routes>
         <Footer />

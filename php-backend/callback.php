@@ -6,6 +6,19 @@
 require_once __DIR__ . '/cors.php';
 require_once __DIR__ . '/db.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    try {
+        $stmt = $pdo->query("SELECT * FROM callbacks ORDER BY created_at DESC");
+        $rows = $stmt->fetchAll();
+        echo json_encode($rows);
+        exit;
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
+        exit;
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['detail' => 'Method not allowed']);

@@ -5,14 +5,47 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { distributorsAPI } from '../services/api';
+import { distributorsAPI, callbackAPI } from '../services/api';
 import { distributors as mockDistributors } from '../data/mock-data';
+import { useToast } from '@/hooks/use-toast';
 
 const DistributorDetail = () => {
   const { id } = useParams();
   const [distributor, setDistributor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const { toast } = useToast();
+
+  const handleExpressInterest = async () => {
+    try {
+      // Demo User Data for this exercise
+      const demoData = {
+        type: 'distributor',
+        intent: 'become',
+        companyName: 'Demo Interest Corp',
+        fullName: 'John Demo',
+        phone: '9876543210',
+        city: 'Demo City',
+        product: distributor.name,
+        pincode: '400001',
+        email: 'demo@example.com'
+      };
+
+      await callbackAPI.submit(demoData);
+
+      toast({
+        title: "Interest Expressed!",
+        description: `Your interest in ${distributor.name} has been recorded. They will contact you soon.`,
+      });
+    } catch (error) {
+      console.error('Error expressing interest:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit interest. Please try again.",
+        variant: "destructive"
+      });
+    }
+  };
 
   useEffect(() => {
     const fetchDistributor = async () => {
@@ -173,7 +206,7 @@ const DistributorDetail = () => {
             <Card className="shadow-lg sticky top-24">
               <CardContent className="p-6">
                 <h3 className="font-bold text-xl mb-6">Get in Touch</h3>
-                
+
                 <div className="space-y-4 mb-6">
                   <a href={`tel:${distributor.phone}`} className="flex items-center gap-3 p-3 bg-green-50 rounded-lg hover:bg-green-100 transition">
                     <Phone className="w-5 h-5 text-green-700" />
@@ -182,7 +215,7 @@ const DistributorDetail = () => {
                       <p className="font-semibold text-green-700">{distributor.phone}</p>
                     </div>
                   </a>
-                  
+
                   {distributor.email && (
                     <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
                       <Mail className="w-5 h-5 text-blue-700" />
@@ -202,7 +235,10 @@ const DistributorDetail = () => {
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-3">
+                <Button 
+                  onClick={handleExpressInterest}
+                  className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-3"
+                >
                   Express Interest
                 </Button>
                 <Button variant="outline" className="w-full rounded-full">

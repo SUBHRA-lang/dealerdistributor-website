@@ -25,6 +25,7 @@ function formatDistributor(array $row): array {
         'experience'    => $row['experience'],
         'territories'   => json_decode($row['territories'] ?? '[]', true),
         'is_featured'   => (bool) $row['is_featured'],
+        'productImage'  => $row['product_image'] ?? null,
     ];
 }
 

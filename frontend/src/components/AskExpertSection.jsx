@@ -91,7 +91,7 @@ const AskExpertSection = () => {
   };
 
   return (
-    <section className="bg-[#2C3E95] py-16 text-white overflow-hidden">
+    <section className="bg-[#2C3E95] py-8 text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
 
@@ -165,8 +165,8 @@ const AskExpertSection = () => {
                     type="button"
                     onClick={() => handleTypeChange('distributor')}
                     className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'distributor'
-                        ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                        : 'border-gray-200 text-gray-500 hover:bg-gray-50'
+                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
+                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
                       }`}
                   >
                     {formData.type === 'distributor' && <CheckCircle2 className="w-4 h-4" />}
@@ -176,8 +176,8 @@ const AskExpertSection = () => {
                     type="button"
                     onClick={() => handleTypeChange('brands')}
                     className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'brands'
-                        ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                        : 'border-gray-200 text-gray-500 hover:bg-gray-50'
+                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
+                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
                       }`}
                   >
                     {formData.type === 'brands' && <CheckCircle2 className="w-4 h-4" />}
@@ -187,8 +187,8 @@ const AskExpertSection = () => {
                     type="button"
                     onClick={() => handleTypeChange('franchise')}
                     className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'franchise'
-                        ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                        : 'border-gray-200 text-gray-500 hover:bg-gray-50'
+                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
+                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
                       }`}
                   >
                     {formData.type === 'franchise' && <CheckCircle2 className="w-4 h-4" />}
@@ -275,7 +275,7 @@ const AskExpertSection = () => {
                 </div>
 
                 {/* Submit Button */}
-                <Button 
+                <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full sm:w-auto px-12 h-12 bg-[#FF6B2C] hover:bg-[#e55a1f] text-white font-bold rounded-full transition-all text-lg shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"

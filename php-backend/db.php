@@ -7,23 +7,38 @@
 // ============================================================
 
 // ============================================================
+// Load .env file if exists
+// ============================================================
+if (file_exists(__DIR__ . '/.env')) {
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        list($name, $value) = explode('=', $line, 2);
+        $_ENV[trim($name)] = trim($value);
+    }
+}
+
+// ============================================================
 // Detect Environment (Local vs cPanel)
 // ============================================================
-$is_local = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) || $_SERVER['HTTP_HOST'] === 'localhost';
+$is_local = (isset($_SERVER['REMOTE_ADDR']) && in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) 
+            || (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'localhost')
+            || php_sapi_name() === 'cli';
 
-if ($is_local) {
-    // LOCAL DEVELOPMENT (Mac Homebrew MySQL)
-    $DB_HOST = 'localhost';
+// ── Database Configuration
+$DB_HOST = $_ENV['DB_HOST'] ?? 'localhost';
+$DB_NAME = $_ENV['DB_NAME'] ?? 'your_db_name';
+$DB_USER = $_ENV['DB_USER'] ?? 'your_db_user';
+$DB_PASS = $_ENV['DB_PASS'] ?? 'your_db_password';
+
+// Override for local if NOT using .env
+if (!$is_local && $DB_NAME === 'your_db_name') {
+    // This is a safety fallback for cPanel if .env is missing
+    // and the code hasn't been updated with actual credentials.
+} elseif ($is_local && !isset($_ENV['DB_NAME'])) {
     $DB_NAME = 'dealerdistributors';
     $DB_USER = 'root';
-    $DB_PASS = ''; // Default Homebrew MySQL has no password
-} else {
-    // cPanel DEPLOYMENT (Shared Hosting)
-    // ⚠️ Edit these for your live server
-    $DB_HOST = 'localhost';
-    $DB_NAME = 'your_db_name';
-    $DB_USER = 'your_db_user';
-    $DB_PASS = 'your_db_password';
+    $DB_PASS = '';
 }
 
 try {

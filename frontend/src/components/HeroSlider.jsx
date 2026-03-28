@@ -22,7 +22,7 @@ const HeroSlider = () => {
   return (
     <div className="relative flex flex-col items-center my-4 lg:my-6 lg:-translate-y-4">
       {/* Wide rectangular slider — full column width, height matches side cards */}
-      <div className="w-full h-[360px] md:h-[440px] lg:h-[min(48vh,480px)] xl:h-[560px] mx-auto rounded-xl overflow-hidden shadow-2xl">
+      <div className="w-full h-[200px] sm:h-[280px] md:h-[440px] lg:h-[min(48vh,480px)] xl:h-[560px] mx-auto rounded-xl overflow-hidden shadow-2xl">
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex w-full h-full">
             {heroImages.map((image, index) => (

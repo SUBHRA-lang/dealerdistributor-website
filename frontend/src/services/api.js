@@ -50,7 +50,8 @@ export const authAPI = {
 
 // Callback API
 export const callbackAPI = {
-  submit: (data) => axios.post(`${API}/callback`, data)
+  submit: (data) => axios.post(`${API}/callback`, data),
+  getAll: () => axios.get(`${API}/callback`)
 };
 
 // Popup Inquiry API

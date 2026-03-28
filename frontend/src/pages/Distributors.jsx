@@ -22,6 +22,7 @@ const Distributors = () => {
   const [allDistributors, setAllDistributors] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState('grid');
 
   // Page Content Configuration
   const pageConfig = {
@@ -74,9 +75,12 @@ const Distributors = () => {
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(d => 
-        d.name.toLowerCase().includes(query) || 
-        d.products.some(p => p.toLowerCase().includes(query)) ||
-        d.category.toLowerCase().includes(query)
+        (d.name && d.name.toLowerCase().includes(query)) || 
+        (d.products && d.products.some(p => {
+          const productName = typeof p === 'object' ? p.name : p;
+          return productName && productName.toLowerCase().includes(query);
+        })) ||
+        (d.category && d.category.toLowerCase().includes(query))
       );
     }
 
@@ -148,7 +152,10 @@ const Distributors = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">{pageConfig.title}</h1>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">{pageConfig.description}</p>
           
-          <div className="max-w-3xl mx-auto relative group">
+          <form 
+            onSubmit={(e) => e.preventDefault()}
+            className="max-w-3xl mx-auto relative group"
+          >
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-6 w-6 text-gray-400 group-focus-within:text-[#2C3E95] transition-colors" />
             </div>
@@ -159,10 +166,13 @@ const Distributors = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Button className="absolute right-2 top-2 bottom-2 bg-[#FF6B2C] hover:bg-[#e55a1f] text-white rounded-full px-8 md:px-12 font-bold text-lg hidden sm:block">
+            <Button 
+              type="submit"
+              className="absolute right-2 top-2 bottom-2 bg-[#FF6B2C] hover:bg-[#e55a1f] text-white rounded-full px-8 md:px-12 font-bold text-lg hidden sm:block"
+            >
               Search
             </Button>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -288,9 +298,23 @@ const Distributors = () => {
                 Showing <span className="font-extrabold text-[#2C3E95]">{distributors.length}</span> verified {pageConfig.type}s
                 {selectedCategory !== 'all' && <span> in <span className="font-semibold">{selectedCategory}</span></span>}
               </p>
-              <div className="flex gap-2">
-                <Button variant="ghost" size="sm" className="text-[#2C3E95]"><List className="w-4 h-4 mr-2" /> List</Button>
-                <Button variant="ghost" size="sm" className="text-gray-400 group hover:text-[#2C3E95]"><Grid className="w-4 h-4 mr-2" /> Grid</Button>
+              <div className="flex bg-gray-100 p-1 rounded-xl">
+                <Button 
+                  variant={viewMode === 'list' ? 'secondary' : 'ghost'} 
+                  size="sm" 
+                  onClick={() => setViewMode('list')}
+                  className={`rounded-lg px-4 ${viewMode === 'list' ? 'bg-white shadow-sm text-[#2C3E95]' : 'text-gray-500 hover:text-[#2C3E95]'}`}
+                >
+                  <List className="w-4 h-4 mr-2" /> List
+                </Button>
+                <Button 
+                  variant={viewMode === 'grid' ? 'secondary' : 'ghost'} 
+                  size="sm" 
+                  onClick={() => setViewMode('grid')}
+                  className={`rounded-lg px-4 ${viewMode === 'grid' ? 'bg-white shadow-sm text-[#2C3E95]' : 'text-gray-500 hover:text-[#2C3E95]'}`}
+                >
+                  <Grid className="w-4 h-4 mr-2" /> Grid
+                </Button>
               </div>
             </div>
 
@@ -304,11 +328,11 @@ const Distributors = () => {
                 <Button onClick={handleReset} variant="outline" className="rounded-full px-8">Clear All Filters</Button>
               </Card>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "flex flex-col gap-4"}>
                 {distributors.map((distributor) => (
-                  <Card key={distributor.id} className="hover:shadow-2xl transition-all duration-300 border-none group bg-white overflow-hidden">
-                    {/* Product image banner */}
-                    {distributor.productImage && (
+                  <Card key={distributor.id} className={`hover:shadow-2xl transition-all duration-300 border-none group bg-white overflow-hidden ${viewMode === 'list' ? 'flex flex-col md:flex-row' : ''}`}>
+                    {/* Product image banner (Grid only or hidden in List) */}
+                    {viewMode === 'grid' && distributor.productImage && (
                       <div className="w-full h-[150px] overflow-hidden bg-gray-100">
                         <img
                           src={distributor.productImage}
@@ -318,9 +342,11 @@ const Distributors = () => {
                         />
                       </div>
                     )}
-                    <CardContent className="p-0">
-                      <div className="p-6">
-                        <div className="flex items-start gap-5 mb-5">
+
+                    <CardContent className={`p-0 flex flex-col ${viewMode === 'list' ? 'md:flex-row flex-1' : ''}`}>
+                      <div className={`p-6 ${viewMode === 'list' ? 'flex-1 grid grid-cols-1 md:grid-cols-3 gap-6' : ''}`}>
+                        {/* 1. Logo & Basic Info */}
+                        <div className="flex items-start gap-5">
                           <div className="w-20 h-20 rounded-xl overflow-hidden shadow-inner flex-shrink-0 border border-gray-100 p-1 bg-white">
                             <img
                               src={distributor.logo}
@@ -333,7 +359,7 @@ const Distributors = () => {
                               <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-100 text-[10px] uppercase tracking-tighter">
                                 Verified {distributor.type}
                               </Badge>
-                              <p className="text-[10px] text-gray-400 font-bold uppercase">{distributor.location}</p>
+                              {viewMode === 'grid' && <p className="text-[10px] text-gray-400 font-bold uppercase">{distributor.location}</p>}
                             </div>
                             <Link to={`/distributor/${distributor.id}`}>
                               <h3 className="font-black text-lg text-gray-900 leading-tight group-hover:text-[#2C3E95] transition-colors line-clamp-1">
@@ -341,10 +367,12 @@ const Distributors = () => {
                               </h3>
                             </Link>
                             <p className="text-xs text-[#2C3E95] font-bold mt-1 opacity-80">{distributor.category}</p>
+                            {viewMode === 'list' && <p className="text-[10px] text-gray-400 font-bold uppercase mt-2">{distributor.location}</p>}
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 mb-5 p-3 bg-gray-50 rounded-lg">
+                        {/* 2. Stats (Grid spacing adjusts) */}
+                        <div className={`grid grid-cols-2 gap-4 ${viewMode === 'list' ? 'items-center' : 'mb-5 p-3 bg-gray-50 rounded-lg'}`}>
                           <div>
                             <p className="text-[10px] text-gray-500 uppercase font-black mb-1">Min Investment</p>
                             <div className="flex items-center gap-1.5 font-bold text-gray-900">
@@ -361,14 +389,18 @@ const Distributors = () => {
                           </div>
                         </div>
 
-                        <div className="mb-6 h-[40px]">
-                          <p className="text-[10px] text-gray-400 uppercase font-black mb-2 tracking-widest">Offers Opportunities for:</p>
-                          <p className="text-xs text-gray-700 line-clamp-2 italic font-medium">"{distributor.products.join(', ')}"</p>
+                        {/* 3. Products/Description */}
+                        <div className={`${viewMode === 'list' ? 'flex flex-col justify-center' : 'mb-6 h-[40px]'}`}>
+                          <p className="text-[10px] text-gray-400 uppercase font-black mb-1 tracking-widest">Offers Opportunities for:</p>
+                          <p className={`text-xs text-gray-700 italic font-medium ${viewMode === 'grid' ? 'line-clamp-2' : ''}`}>
+                            "{distributor.products.map(p => typeof p === 'object' ? p.name : p).join(', ')}"
+                          </p>
                         </div>
                       </div>
 
-                      <div className="flex border-t border-gray-50">
-                        <a href={`tel:${distributor.phone}`} className="flex-1 text-center py-4 text-gray-600 hover:bg-gray-50 transition-colors border-r border-gray-50 text-xs font-bold flex items-center justify-center gap-2">
+                      {/* 4. Actions */}
+                      <div className={`flex ${viewMode === 'list' ? 'md:flex-col md:w-48 border-l border-gray-50' : 'border-t border-gray-50'}`}>
+                        <a href={`tel:${distributor.phone}`} className={`flex-1 text-center py-4 text-gray-600 hover:bg-gray-50 transition-colors border-r border-gray-50 text-xs font-bold flex items-center justify-center gap-2 ${viewMode === 'list' ? 'md:border-r-0 md:border-b' : ''}`}>
                           <Phone className="w-3.5 h-3.5" /> Call Now
                         </a>
                         <Link to={`/distributor/${distributor.id}`} className="flex-1 text-center py-4 bg-white text-[#2C3E95] hover:bg-blue-50 transition-colors text-xs font-black flex items-center justify-center gap-2">
