@@ -53,9 +53,9 @@ const Header = () => {
               DealerDistributors.com
             </Link>
             <p className="text-xs text-gray-600 hidden sm:block">
-              <Link to="/distributors" className="hover:text-[#2C3E95] hover:underline transition-colors">Distributors</Link>
+              <Link to="/franchises" className="hover:text-[#2C3E95] hover:underline transition-colors">Dealers</Link>
               {' • '}
-              <Link to="/franchises" className="hover:text-[#2C3E95] hover:underline transition-colors">Franchises</Link>
+              <Link to="/distributors" className="hover:text-[#2C3E95] hover:underline transition-colors">Distributors</Link>
             </p>
           </div>
 
@@ -64,7 +64,7 @@ const Header = () => {
             <div className="flex items-center bg-gray-100 rounded-full overflow-hidden w-full">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                 <SelectTrigger className="w-40 lg:w-48 border-0 bg-transparent focus:ring-0 shrink-0">
-                  <SelectValue placeholder="Distributors" />
+                  <SelectValue placeholder="Dealers" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
@@ -139,18 +139,18 @@ const Header = () => {
             {/* Mobile Nav Links */}
             <div className="flex flex-col gap-2">
               <Link
+                to="/franchises"
+                className="px-4 py-2 text-sm text-gray-700 hover:text-[#2C3E95] hover:bg-gray-50 rounded-lg"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Dealers
+              </Link>
+              <Link
                 to="/distributors"
                 className="px-4 py-2 text-sm text-gray-700 hover:text-[#2C3E95] hover:bg-gray-50 rounded-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Distributorships
-              </Link>
-              <Link
-                to="/franchises"
-                className="px-4 py-2 text-sm text-gray-700 hover:text-[#2C3E95] hover:bg-gray-50 rounded-lg"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Franchises
               </Link>
               <Link
                 to="/blog"

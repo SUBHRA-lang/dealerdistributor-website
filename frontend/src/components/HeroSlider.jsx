@@ -7,7 +7,7 @@ const heroImages = [
   { src: '/assets/hero-slider/logistics.png', alt: 'Modern Logistics' }
 ];
 
-const HeroSlider = () => {
+const HeroSlider = ({ className = "" }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 });
 
   useEffect(() => {
@@ -20,9 +20,9 @@ const HeroSlider = () => {
   }, [emblaApi]);
 
   return (
-    <div className="relative flex flex-col items-center mt-1 mb-4 lg:mt-6 lg:mb-6 lg:-translate-y-7">
+    <div className={`relative flex flex-col items-center ${className}`}>
       {/* Wide rectangular slider — full column width, height matches side cards */}
-      <div className="w-full h-[200px] sm:h-[280px] md:h-[440px] lg:h-[min(48vh,480px)] xl:h-[560px] mx-auto rounded-xl overflow-hidden shadow-2xl">
+      <div className="w-full h-full mx-auto rounded-xl overflow-hidden shadow-2xl">
         <div className="overflow-hidden w-full h-full" ref={emblaRef}>
           <div className="flex w-full h-full">
             {heroImages.map((image, index) => (
@@ -37,8 +37,6 @@ const HeroSlider = () => {
           </div>
         </div>
       </div>
-
-      {/* Exclusive Brands badge */}
     </div>
   );
 };

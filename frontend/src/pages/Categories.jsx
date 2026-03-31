@@ -40,7 +40,7 @@ const Categories = () => {
           <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 mb-4 px-4 py-1">Business Sectors</Badge>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Explore All Categories</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Find the perfect distribution or franchise opportunity across a wide range of industry sectors.
+            Find the perfect distribution or dealers opportunity across a wide range of industry sectors.
           </p>
         </div>
 

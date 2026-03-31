@@ -24,7 +24,7 @@ const Sitemap = () => {
       }))
     },
     {
-      title: 'Franchises',
+      title: 'Dealers',
       icon: Briefcase,
       links: categories.map(cat => ({ 
         name: cat.name, 

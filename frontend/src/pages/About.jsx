@@ -12,7 +12,7 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About DealerDistributors.com</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            India's Leading B2B Platform Connecting Manufacturers, Distributors, and Franchisees
+            India's Leading B2B Platform Connecting Manufacturers, Dealers, and Distributors
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ const About = () => {
                   DealerDistributors.com is dedicated to bridging the gap between manufacturers seeking to expand their distribution networks and entrepreneurs looking for profitable business opportunities. We provide a comprehensive platform that simplifies the process of finding, connecting, and partnering with the right business associates.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  With over 1.2 lakh distributors registered on our platform, we've become India's most trusted marketplace for distributorship and franchise opportunities across all major industries.
+                  With over 1.2 lakh partners registered on our platform, we've become India's most trusted marketplace for dealers and distributorship opportunities across all major industries.
                 </p>
               </CardContent>
             </Card>
@@ -46,7 +46,7 @@ const About = () => {
                   <Users className="w-8 h-8 text-[#2C3E95]" />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">1.2L+</h3>
-                <p className="text-gray-600">Registered Distributors</p>
+                <p className="text-gray-600">Registered Dealers & Distributors</p>
               </CardContent>
             </Card>
 

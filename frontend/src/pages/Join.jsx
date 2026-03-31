@@ -76,8 +76,8 @@ const Join = () => {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="manufacturer">Manufacturer / Brand Owner</SelectItem>
-                      <SelectItem value="distributor">Distributor / Dealer</SelectItem>
-                      <SelectItem value="franchisee">Franchisee Seeker</SelectItem>
+                      <SelectItem value="franchisee">Dealers</SelectItem>
+                      <SelectItem value="distributor">Dealer / Distributor</SelectItem>
                       <SelectItem value="agent">Sales Agent</SelectItem>
                     </SelectContent>
                   </Select>

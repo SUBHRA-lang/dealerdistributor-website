@@ -5,7 +5,7 @@ import * as LucideIcons from 'lucide-react';
 import { Button } from './ui/button';
 import { categoriesAPI } from '../services/api';
 
-const CategorySidebar = () => {
+const CategorySidebar = ({ className = "" }) => {
   const [categoriesList, setCategoriesList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,7 +26,7 @@ const CategorySidebar = () => {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full">
+      <div className={`bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full ${className}`}>
         <h3 className="text-lg font-bold text-gray-900 mb-4">TOP CATEGORIES</h3>
         <div className="space-y-2">
           {[1, 2, 3, 4, 5].map((i) => (
@@ -38,7 +38,7 @@ const CategorySidebar = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full flex flex-col h-[200px] sm:h-[280px] md:h-[440px] lg:h-[min(48vh,480px)] xl:h-[560px]">
+    <div className={`bg-white rounded-lg shadow-lg border border-gray-200 p-6 w-full flex flex-col ${className}`}>
       <h3 className="text-lg font-bold text-gray-900 mb-3 pl-2">TOP CATEGORIES</h3>
 
       {/* Scrollable list — max-h ensures it scrolls once it exceeds the fixed height */}

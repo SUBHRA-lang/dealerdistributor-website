@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Package, MessageSquare, Ship, Users, CheckCircle2, Loader2 } from 'lucide-react';
+import { Phone, Mail, Package, MessageSquare, Ship, Users, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -8,7 +8,7 @@ import { Textarea } from './ui/textarea';
 
 const AskExpertSection = () => {
   const [formData, setFormData] = useState({
-    type: 'distributor',
+    type: 'franchise',
     role: 'looking',
     email: '',
     countryCode: '+91',
@@ -40,8 +40,8 @@ const AskExpertSection = () => {
         };
       case 'franchise':
         return {
-          looking: 'I am looking for Franchise',
-          become: 'I want to become a Franchise'
+          looking: 'I am looking for Dealers',
+          become: 'I want to become a Dealers'
         };
       default:
         return {
@@ -71,7 +71,7 @@ const AskExpertSection = () => {
       if (data.success) {
         alert(data.message || 'Thank you! Your requirement has been submitted. Our experts will contact you soon.');
         setFormData({
-          type: 'distributor',
+          type: 'franchise',
           role: 'looking',
           email: '',
           countryCode: '+91',
@@ -91,130 +91,94 @@ const AskExpertSection = () => {
   };
 
   return (
-    <section className="bg-[#2C3E95] py-8 text-white overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+    <section className="bg-[#2C3E95] py-12 lg:py-20 text-white overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 translate-x-24 pointer-events-none" />
 
-          {/* Left Content */}
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl font-bold mb-10">Ask Our Experts</h2>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-black mb-4 tracking-tight">Ask Our Experts</h2>
+          <p className="text-blue-200 text-lg max-w-2xl mx-auto">Get personalized guidance to scale your business across India</p>
+        </div>
 
-            <div className="space-y-12">
-              <div className="flex gap-6">
-                <div className="bg-orange-500/20 p-4 rounded-2xl h-fit">
-                  <Ship className="w-8 h-8 text-orange-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Distributors</h3>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    Willing to appoint distributors for your business? Seek expert guidance and unlock limitless possibilities!
-                  </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    Want to take distributorship? Don't hesitate to reach out to our industry specialists to drive your business forward.
-                  </p>
-                </div>
+        <div className="flex flex-col gap-12 lg:gap-16">
+          {/* Top Row - Three Pillars (Horizontal Alignment) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 flex items-center gap-4 border border-white/10 hover:bg-white/15 transition-all group">
+              <div className="bg-orange-500 p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Users className="w-6 h-6 text-white" />
               </div>
+              <h3 className="text-xl font-bold">Dealers</h3>
+            </div>
 
-              <div className="w-full h-px bg-white/10" />
-
-              <div className="flex gap-6">
-                <div className="bg-orange-500/20 p-4 rounded-2xl h-fit">
-                  <Package className="w-8 h-8 text-orange-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Brands</h3>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    List your brand with us to reach a wider audience and find the perfect distribution partners.
-                  </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    Elevate your brand presence across multiple regions with our expert-led distribution network.
-                  </p>
-                </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 flex items-center gap-4 border border-white/10 hover:bg-white/15 transition-all group">
+              <div className="bg-orange-500 p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Ship className="w-6 h-6 text-white" />
               </div>
+              <h3 className="text-xl font-bold">Distributors</h3>
+            </div>
 
-              <div className="w-full h-px bg-white/10" />
-
-              <div className="flex gap-6">
-                <div className="bg-orange-500/20 p-4 rounded-2xl h-fit">
-                  <Users className="w-8 h-8 text-orange-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Franchise</h3>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    Expand your brand with like-minded franchisees; Reach new heights of success together!
-                  </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    Exploring franchise opportunities? Connect with our experts for personalised guidance and support.
-                  </p>
-                </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 flex items-center gap-4 border border-white/10 hover:bg-white/15 transition-all group">
+              <div className="bg-orange-500 p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Package className="w-6 h-6 text-white" />
               </div>
+              <h3 className="text-xl font-bold">Brands</h3>
             </div>
           </div>
 
-          {/* Right Content - Form Card */}
-          <div className="lg:w-1/2 w-full">
-            <div className="bg-white rounded-[2.5rem] p-8 lg:p-12 text-gray-900 shadow-2xl relative">
-              <h3 className="text-2xl font-bold mb-1">What are you looking ?</h3>
-              <p className="text-sm text-gray-500 mb-8">Fast Track Your Business</p>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-
-                {/* Type Toggle */}
-                <div className="flex gap-4 mb-6">
-                  <button
-                    type="button"
-                    onClick={() => handleTypeChange('distributor')}
-                    className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'distributor'
-                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
-                      }`}
-                  >
-                    {formData.type === 'distributor' && <CheckCircle2 className="w-4 h-4" />}
-                    Distributor
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleTypeChange('brands')}
-                    className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'brands'
-                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
-                      }`}
-                  >
-                    {formData.type === 'brands' && <CheckCircle2 className="w-4 h-4" />}
-                    Brands
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleTypeChange('franchise')}
-                    className={`flex items-center gap-2 px-6 py-2 rounded-full border transition-all ${formData.type === 'franchise'
-                      ? 'bg-blue-50 border-[#2C3E95] text-[#2C3E95] font-semibold ring-1 ring-[#2C3E95]'
-                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
-                      }`}
-                  >
-                    {formData.type === 'franchise' && <CheckCircle2 className="w-4 h-4" />}
-                    Franchise
-                  </button>
+          {/* Bottom - Form Card (Full Width / Horizontal Optimization) */}
+          <div className="w-full">
+            <div className="bg-white rounded-[2.5rem] p-8 lg:p-12 text-gray-900 shadow-2xl">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-black text-[#2C3E95] mb-2">What are you looking for?</h3>
+                  <p className="text-gray-500 font-medium tracking-wide flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    Fast Track Your Business Growth
+                  </p>
                 </div>
 
-                {/* Role Toggle */}
-                <RadioGroup
-                  value={formData.role}
-                  onValueChange={handleRoleChange}
-                  className="flex flex-col sm:flex-row gap-4 mb-6"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="looking" id="role-looking" className="border-gray-300" />
-                    <Label htmlFor="role-looking" className="text-sm cursor-pointer whitespace-nowrap">{roleLabels.looking}</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="become" id="role-become" className="border-gray-300" />
-                    <Label htmlFor="role-become" className="text-sm cursor-pointer whitespace-nowrap">{roleLabels.become}</Label>
-                  </div>
-                </RadioGroup>
+                {/* Type Toggle in Header for space saving */}
+                <div className="flex bg-gray-100 p-1.5 rounded-2xl gap-1">
+                  {['franchise', 'distributor', 'brands'].map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => handleTypeChange(t)}
+                      className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all capitalize ${formData.type === t
+                          ? 'bg-white text-[#2C3E95] shadow-md border border-gray-100'
+                          : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
+                        }`}
+                    >
+                      {t === 'franchise' ? 'Dealers' : t}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-                {/* Contact Info Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* horizontal row 1: Role Selection */}
+                <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
+                  <p className="text-xs font-black text-[#2C3E95]/60 uppercase tracking-widest mb-4">I want to...</p>
+                  <RadioGroup
+                    value={formData.role}
+                    onValueChange={handleRoleChange}
+                    className="flex flex-col sm:flex-row gap-6 lg:gap-12"
+                  >
+                    <div className="flex items-center space-x-3 group cursor-pointer">
+                      <RadioGroupItem value="looking" id="role-looking" className="w-5 h-5 border-blue-300 text-[#2C3E95]" />
+                      <Label htmlFor="role-looking" className="text-base font-bold text-gray-700 cursor-pointer group-hover:text-[#2C3E95] transition-colors">{roleLabels.looking}</Label>
+                    </div>
+                    <div className="flex items-center space-x-3 group cursor-pointer">
+                      <RadioGroupItem value="become" id="role-become" className="w-5 h-5 border-blue-300 text-[#2C3E95]" />
+                      <Label htmlFor="role-become" className="text-base font-bold text-gray-700 cursor-pointer group-hover:text-[#2C3E95] transition-colors">{roleLabels.become}</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* horizontal row 2: Contact Info */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
                     <Input
                       type="email"
                       name="email"
@@ -222,19 +186,40 @@ const AskExpertSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="rounded-xl border-gray-200 h-12"
+                      className="rounded-xl border-gray-200 h-14 bg-gray-50/50 focus:bg-white transition-all shadow-sm"
                     />
                   </div>
-                  <div className="flex gap-2">
-                    <div className="w-24">
+                  <div className="md:col-span-1 flex gap-2">
+                    <div className="w-28 shrink-0">
                       <select
-                        className="w-full h-12 rounded-xl border border-gray-200 bg-white px-3 text-sm"
+                        className="w-full h-14 rounded-xl border border-gray-200 bg-gray-50/50 px-3 text-sm font-bold focus:bg-white transition-all shadow-sm"
                         value={formData.countryCode}
                         onChange={(e) => setFormData(prev => ({ ...prev, countryCode: e.target.value }))}
                       >
                         <option value="+91">🇮🇳 +91</option>
                         <option value="+1">🇺🇸 +1</option>
                         <option value="+44">🇬🇧 +44</option>
+                        <option value="+64">🇳🇿 +64</option>
+                        <option value="+971">🇦🇪 +971</option>
+                        <option value="+66">🇹🇭 +66</option>
+                        <option value="+380">🇺🇦 +380</option>
+                        <option value="+351">🇵🇹 +351</option>
+                        <option value="+7">🇷🇺 +7</option>
+                        <option value="+86">🇨🇳 +86</option>
+                        <option value="+81">🇯🇵 +81</option>
+                        <option value="+61">🇦🇺 +61</option>
+                        <option value="+55">🇧🇷 +55</option>
+                        <option value="+52">🇲🇽 +52</option>
+                        <option value="+33">🇫🇷 +33</option>
+                        <option value="+49">🇩🇪 +49</option>
+                        <option value="+39">🇮🇹 +39</option>
+                        <option value="+34">🇪🇸 +34</option>
+                        <option value="+55">🇧🇷 +55</option>
+                        <option value="+52">🇲🇽 +52</option>
+                        <option value="+33">🇫🇷 +33</option>
+                        <option value="+49">🇩🇪 +49</option>
+                        <option value="+39">🇮🇹 +39</option>
+                        <option value="+34">🇪🇸 +34</option>
                       </select>
                     </div>
                     <Input
@@ -244,51 +229,52 @@ const AskExpertSection = () => {
                       value={formData.mobile}
                       onChange={handleChange}
                       required
-                      className="flex-1 rounded-xl border-gray-200 h-12"
+                      className="flex-1 rounded-xl border-gray-200 h-14 bg-gray-50/50 focus:bg-white transition-all shadow-sm"
+                    />
+                  </div>
+                  <div className="md:col-span-1">
+                    <Input
+                      type="text"
+                      name="productName"
+                      placeholder="Enter Product Name"
+                      value={formData.productName}
+                      onChange={handleChange}
+                      required
+                      className="rounded-xl border-gray-200 h-14 bg-gray-50/50 focus:bg-white transition-all shadow-sm"
                     />
                   </div>
                 </div>
 
-                {/* Product Name */}
-                <div className="space-y-2">
-                  <Input
-                    type="text"
-                    name="productName"
-                    placeholder="Enter Product Name"
-                    value={formData.productName}
-                    onChange={handleChange}
-                    required
-                    className="rounded-xl border-gray-200 h-12"
-                  />
+                {/* horizontal row 3: Requirement & Submit */}
+                <div className="flex flex-col lg:flex-row gap-6 items-start">
+                  <div className="flex-1 w-full">
+                    <Textarea
+                      name="requirement"
+                      placeholder="Briefly describe your business requirement..."
+                      value={formData.requirement}
+                      onChange={handleChange}
+                      required
+                      className="rounded-xl border-gray-200 min-h-[100px] bg-gray-50/50 focus:bg-white transition-all shadow-sm resize-none"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full lg:w-auto px-12 h-[100px] bg-[#FF6B2C] hover:bg-[#e55a1f] text-white font-black rounded-xl transition-all text-xl shadow-xl hover:shadow-2xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex flex-col items-center justify-center gap-1 group"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-6 w-6 animate-spin" />
+                        <span className="text-sm">Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>SUBMIT</span>
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                      </>
+                    )}
+                  </Button>
                 </div>
-
-                {/* Requirement */}
-                <div className="space-y-2">
-                  <Textarea
-                    name="requirement"
-                    placeholder="Type your requirment"
-                    value={formData.requirement}
-                    onChange={handleChange}
-                    required
-                    className="rounded-xl border-gray-200 min-h-[100px] resize-none"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto px-12 h-12 bg-[#FF6B2C] hover:bg-[#e55a1f] text-white font-bold rounded-full transition-all text-lg shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Submitting...
-                    </>
-                  ) : (
-                    'Submit'
-                  )}
-                </Button>
               </form>
             </div>
           </div>

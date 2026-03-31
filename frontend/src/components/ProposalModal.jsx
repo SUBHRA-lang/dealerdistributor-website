@@ -119,16 +119,16 @@ const ProposalModal = ({ isOpen, onOpenChange, inquiryData }) => {
             {/* Toggles: Distributor / Franchise */}
             <div className="grid grid-cols-2 gap-4">
               <div 
-                onClick={() => handleSelectChange('type', 'Distributor')}
-                className={`cursor-pointer p-4 rounded-xl border-2 transition-all text-center font-bold ${formData.type === 'Distributor' ? 'border-[#2C3E95] bg-blue-50 text-[#2C3E95]' : 'border-gray-100 bg-white text-gray-400 hover:border-gray-200'}`}
-              >
-                Distributor
-              </div>
-              <div 
                 onClick={() => handleSelectChange('type', 'Franchise')}
                 className={`cursor-pointer p-4 rounded-xl border-2 transition-all text-center font-bold ${formData.type === 'Franchise' ? 'border-[#FF6B2C] bg-orange-50 text-[#FF6B2C]' : 'border-gray-100 bg-white text-gray-400 hover:border-gray-200'}`}
               >
-                Franchise
+                Dealers
+              </div>
+              <div 
+                onClick={() => handleSelectChange('type', 'Distributor')}
+                className={`cursor-pointer p-4 rounded-xl border-2 transition-all text-center font-bold ${formData.type === 'Distributor' ? 'border-[#2C3E95] bg-blue-50 text-[#2C3E95]' : 'border-gray-100 bg-white text-gray-400 hover:border-gray-200'}`}
+              >
+                Distributors
               </div>
             </div>
 
@@ -159,11 +159,11 @@ const ProposalModal = ({ isOpen, onOpenChange, inquiryData }) => {
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value={`I am looking for ${formData.type.toLowerCase()}`} id="r1" className="text-[#2C3E95]" />
-                    <Label htmlFor="r1" className="text-sm font-medium text-gray-700">Looking for {formData.type}</Label>
+                    <Label htmlFor="r1" className="text-sm font-medium text-gray-700">Looking for {formData.type === 'Franchise' ? 'Dealers' : formData.type}</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value={`I want to become a ${formData.type.toLowerCase()}`} id="r2" className="text-[#2C3E95]" />
-                    <Label htmlFor="r2" className="text-sm font-medium text-gray-700">Want to become {formData.type}</Label>
+                    <Label htmlFor="r2" className="text-sm font-medium text-gray-700">Want to become {formData.type === 'Franchise' ? 'Dealers' : formData.type}</Label>
                   </div>
                 </RadioGroup>
               </div>

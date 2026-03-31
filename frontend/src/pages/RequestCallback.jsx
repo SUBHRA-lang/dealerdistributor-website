@@ -15,7 +15,7 @@ const RequestCallback = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [type, setType] = useState('distributor'); // 'distributor' or 'franchise'
+  const [type, setType] = useState('franchise'); // 'distributor' or 'franchise'
   const [intent, setIntent] = useState('appoint'); // 'appoint' (looking for) or 'become' (want to become)
 
   const [formData, setFormData] = useState({
@@ -140,16 +140,16 @@ const RequestCallback = () => {
               <Tabs value={type} onValueChange={setType} className="w-full">
                 <TabsList className="grid w-full grid-cols-2 bg-gray-100 rounded-xl p-1 h-14">
                   <TabsTrigger 
+                    value="franchise" 
+                    className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#2C3E95] data-[state=active]:shadow-sm font-bold text-gray-600 h-12"
+                  >
+                    Dealers
+                  </TabsTrigger>
+                  <TabsTrigger 
                     value="distributor" 
                     className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#2C3E95] data-[state=active]:shadow-sm font-bold text-gray-600 h-12"
                   >
                     Distributor
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="franchise" 
-                    className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#2C3E95] data-[state=active]:shadow-sm font-bold text-gray-600 h-12"
-                  >
-                    Franchise
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -159,13 +159,13 @@ const RequestCallback = () => {
                 <div className="flex items-center space-x-3 cursor-pointer group">
                   <RadioGroupItem value="appoint" id="appoint" className="border-2 border-gray-300 text-[#2C3E95]" />
                   <Label htmlFor="appoint" className="font-bold text-gray-700 cursor-pointer group-hover:text-[#2C3E95] transition-colors">
-                    I am looking for {type}
+                    I am looking for {type === 'franchise' ? 'Dealers' : type}
                   </Label>
                 </div>
                 <div className="flex items-center space-x-3 cursor-pointer group">
                   <RadioGroupItem value="become" id="become" className="border-2 border-gray-300 text-[#2C3E95]" />
                   <Label htmlFor="become" className="font-bold text-gray-700 cursor-pointer group-hover:text-[#2C3E95] transition-colors">
-                    I want to become a {type}
+                    I want to become a {type === 'franchise' ? 'Dealers' : type}
                   </Label>
                 </div>
               </RadioGroup>

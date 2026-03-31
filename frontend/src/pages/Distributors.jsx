@@ -37,16 +37,16 @@ const Distributors = () => {
 
   // Page Content Configuration
   const pageConfig = {
-    title: isFranchise ? 'Franchise Opportunities' : 'Distributor Opportunities',
+    title: isFranchise ? 'Dealers Opportunities' : 'Distributor Opportunities',
     description: isFranchise 
-      ? 'Explore low-cost and premium franchise business opportunities across India' 
+      ? 'Explore low-cost and premium dealers business opportunities across India' 
       : 'Explore premium distributorship opportunities across India',
-    placeholder: isFranchise ? 'Search franchises...' : 'Search distributors...',
+    placeholder: isFranchise ? 'Search dealers...' : 'Search distributors...',
     type: isFranchise ? 'franchise' : 'distributor'
   };
 
   const categoryFallbackImages = {
-    'Food & Beverage':                  'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&h=200&fit=crop&auto=format',
+    'Food & Beverage':                  'https://images.unsplash.com/photo-1543353071-873f17a7a088?w=400&h=200&fit=crop&auto=format',
     'FMCG':                             'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=200&fit=crop&auto=format',
     'Health & Beauty':                  'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=200&fit=crop&auto=format',
     'Pharmaceuticals':                  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=200&fit=crop&auto=format',
@@ -169,7 +169,7 @@ const Distributors = () => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#2C3E95] mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading {pageConfig.type}s...</p>
+          <p className="mt-4 text-gray-600">Loading {isFranchise ? 'dealers' : 'distributors'}...</p>
         </div>
       </div>
     );
@@ -219,7 +219,7 @@ const Distributors = () => {
             {/* Category image map */}
             {(() => {
               const categoryImages = {
-                'Food & Beverage':                  'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=80&h=80&fit=crop&auto=format',
+                'Food & Beverage':                  'https://images.unsplash.com/photo-1543353071-873f17a7a088?w=80&h=80&fit=crop&auto=format',
                 'FMCG':                             'https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop&auto=format',
                 'Health & Beauty':                  'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop&auto=format',
                 'Pharmaceuticals':                  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=80&h=80&fit=crop&auto=format',
@@ -314,7 +314,7 @@ const Distributors = () => {
                 {/* Lead Gen Box */}
                 <div className="mt-8 p-4 bg-orange-50 border border-orange-100 rounded-xl">
                   <h4 className="font-bold text-orange-900 text-sm mb-2">Looking to Appoint?</h4>
-                  <p className="text-xs text-orange-800 mb-4">Get verified {pageConfig.type}s for your brand today.</p>
+                  <p className="text-xs text-orange-800 mb-4">Get verified {isFranchise ? 'dealers' : 'distributors'} for your brand today.</p>
                   <Link to="/join">
                     <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] text-sm py-0 h-9">
                       Join Free Now
@@ -329,7 +329,7 @@ const Distributors = () => {
           <div className="lg:w-3/4">
             <div className="mb-6 flex items-center justify-between">
               <p className="text-gray-600">
-                Showing <span className="font-extrabold text-[#2C3E95]">{distributors.length}</span> verified {pageConfig.type}s
+                Showing <span className="font-extrabold text-[#2C3E95]">{distributors.length}</span> verified {isFranchise ? 'dealers' : 'distributors'}
                 {selectedCategory !== 'all' && <span> in <span className="font-semibold">{selectedCategory}</span></span>}
               </p>
               <div className="flex bg-gray-100 p-1 rounded-xl">
@@ -357,7 +357,7 @@ const Distributors = () => {
                 <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Search className="w-8 h-8 text-gray-400" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No Matching {pageConfig.type}s Found</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">No Matching {isFranchise ? 'dealers' : 'distributors'} Found</h3>
                 <p className="text-gray-600 mb-6">Try adjusting your filters or search keywords to find more opportunities.</p>
                 <Button onClick={handleReset} variant="outline" className="rounded-full px-8">Clear All Filters</Button>
               </Card>
@@ -394,7 +394,7 @@ const Distributors = () => {
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-1">
                               <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-100 text-[10px] uppercase tracking-tighter">
-                                Verified {distributor.type}
+                                Verified {distributor.type === 'franchise' ? 'Dealers' : 'Distributor'}
                               </Badge>
                               {viewMode === 'grid' && <p className="text-[10px] text-gray-400 font-bold uppercase">{distributor.location}</p>}
                             </div>
@@ -458,7 +458,7 @@ const Distributors = () => {
         <div className="container mx-auto px-4 text-center">
           <Badge className="mb-4 bg-blue-50 text-[#2C3E95] border-blue-100 uppercase tracking-widest px-4 py-1">Join the Network</Badge>
           <h2 className="text-3xl font-black text-gray-900 mb-4">Expand Your Reach Across India</h2>
-          <p className="text-gray-600 mb-10 max-w-xl mx-auto">Join thousands of brands and {pageConfig.type}s who have successfully scaled their operations using our platform.</p>
+          <p className="text-gray-600 mb-10 max-w-xl mx-auto">Join thousands of brands and {isFranchise ? 'dealers' : 'distributors'} who have successfully scaled their operations using our platform.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/post-requirement">
               <Button size="lg" className="bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full px-10 font-bold">
@@ -467,7 +467,7 @@ const Distributors = () => {
             </Link>
             <Link to="/join">
               <Button size="lg" variant="outline" className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white rounded-full px-10 font-bold">
-                Register as {pageConfig.type === 'franchise' ? 'Franchisor' : 'Distributor'}
+                Register as {isFranchise ? 'Dealers' : 'Distributor'}
               </Button>
             </Link>
           </div>

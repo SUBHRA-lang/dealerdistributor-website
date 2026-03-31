@@ -135,7 +135,7 @@ export const distributors = [
     established: 2021,
     products: ['Authentic Kunafa', 'Arabic Desserts', 'Beverages'],
     phone: '08071793082',
-    description: 'Popular dessert franchise specializing in authentic Arabic Kunafa and sweets.',
+    description: 'Popular dessert dealers specializing in authentic Arabic Kunafa and sweets.',
     location: 'Kozhikode, Kerala',
     experience: '3 years',
     territories: ['Kerala', 'Tamil Nadu']
@@ -152,7 +152,7 @@ export const distributors = [
     established: 2018,
     products: ['Fried Chicken', 'Burgers', 'Sides'],
     phone: '08758655303',
-    description: 'Fast food franchise offering high-quality fried chicken and continental quick bites.',
+    description: 'Fast food dealers offering high-quality fried chicken and continental quick bites.',
     location: 'Kolkata, West Bengal',
     experience: '6 years',
     territories: ['West Bengal', 'Bihar', 'Odisha']
@@ -169,7 +169,7 @@ export const distributors = [
     established: 2015,
     products: ['Ethnic Wear', 'Designer Sarees', 'Lehengas'],
     phone: '07971459539',
-    description: 'Premium ethnic wear franchise for women, showcasing Kasturi Creations designer labels.',
+    description: 'Premium ethnic wear dealers for women, showcasing Kasturi Creations designer labels.',
     location: 'Faridabad, Haryana',
     experience: '9 years',
     territories: ['North India', 'West India']
@@ -186,7 +186,7 @@ export const distributors = [
     established: 2022,
     products: ['Skincare Products', 'Haircare Solutions', 'Wellness Formulations'],
     phone: '07971459829',
-    description: 'Pharmaceutical and cosmetics franchise focusing on effective health and beauty formulations.',
+    description: 'Pharmaceutical and cosmetics dealers focusing on effective health and beauty formulations.',
     location: 'Mohali, Punjab',
     experience: '2 years',
     territories: ['Punjab', 'Haryana', 'Himachal Pradesh']
@@ -709,11 +709,11 @@ export const blogPosts = [
   },
   {
     id: 9,
-    title: 'Expanding Your Franchise: When is the Right Time?',
-    excerpt: 'Scaling a franchise requires careful timing and market analysis. Here is how to know if you are ready...',
+    title: 'Expanding Your Dealers: When is the Right Time?',
+    excerpt: 'Scaling a dealers requires careful timing and market analysis. Here is how to know if you are ready...',
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop',
     date: '2024-12-01',
-    author: 'Franchise Team',
+    author: 'Dealers Team',
     category: 'Insights'
   }
 ];

@@ -59,23 +59,23 @@ const Home = () => {
   }
 
   const categoryFallbackImages = {
-    'Food & Beverage':                  'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=80&h=80&fit=crop&auto=format',
-    'FMCG':                             'https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop&auto=format',
-    'Health & Beauty':                  'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop&auto=format',
-    'Pharmaceuticals':                  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=80&h=80&fit=crop&auto=format',
-    'Apparel & Fashion':                'https://images.unsplash.com/photo-1445205170230-053b83016050?w=80&h=80&fit=crop&auto=format',
-    'Chemicals':                        'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=80&h=80&fit=crop&auto=format',
-    'Home Supplies':                    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop&auto=format',
-    'Construction & Real Estate':       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format',
-    'Electronics & Electrical Supplies':'https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&auto=format',
-    'Agriculture':                      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=80&h=80&fit=crop&auto=format',
-    'Automobile':                       'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=80&h=80&fit=crop&auto=format',
-    'Packaging & Paper':                'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=80&h=80&fit=crop&auto=format',
-    'Hospital & Medical Supplies':      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&h=80&fit=crop&auto=format',
-    'Gifts & Crafts':                   'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=80&h=80&fit=crop&auto=format',
-    'Consumer Electronics':             'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=80&h=80&fit=crop&auto=format',
-    'Pipes, Tubes & Fittings':          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop&auto=format',
-    'Industrial Supplies':              'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format',
+    'Food & Beverage': 'https://images.unsplash.com/photo-1543353071-873f17a7a088?w=80&h=80&fit=crop&auto=format',
+    'FMCG': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop&auto=format',
+    'Health & Beauty': 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop&auto=format',
+    'Pharmaceuticals': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=80&h=80&fit=crop&auto=format',
+    'Apparel & Fashion': 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=80&h=80&fit=crop&auto=format',
+    'Chemicals': 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=80&h=80&fit=crop&auto=format',
+    'Home Supplies': 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop&auto=format',
+    'Construction & Real Estate': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format',
+    'Electronics & Electrical Supplies': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&auto=format',
+    'Agriculture': 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=80&h=80&fit=crop&auto=format',
+    'Automobile': 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=80&h=80&fit=crop&auto=format',
+    'Packaging & Paper': 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=80&h=80&fit=crop&auto=format',
+    'Hospital & Medical Supplies': 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&h=80&fit=crop&auto=format',
+    'Gifts & Crafts': 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=80&h=80&fit=crop&auto=format',
+    'Consumer Electronics': 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=80&h=80&fit=crop&auto=format',
+    'Pipes, Tubes & Fittings': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop&auto=format',
+    'Industrial Supplies': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format',
   };
 
   return (
@@ -83,62 +83,59 @@ const Home = () => {
       {/* Hero Section */}
       <section className="bg-gray-50 pt-4 pb-8 lg:pt-8 lg:pb-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 relative z-10">
-            {/* Left Sidebar - Categories (only on large screens) */}
-            <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pr-[35px]">
-              <CategorySidebar />
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 relative z-10 items-stretch">
+            {/* Left Sidebar - Categories */}
+            <div className="hidden lg:block lg:col-span-3 lg:-translate-x-5 lg:-translate-y-2.5 h-[560px]">
+              <CategorySidebar className="h-full" />
             </div>
 
             {/* Center - Hero Content */}
-            <div className="lg:col-span-6 text-center">
-              {/* Dynamic Hero Slider (Circular) */}
-              <HeroSlider />
+            <div className="lg:col-span-6 lg:-translate-y-2.5 h-[560px]">
+              <HeroSlider className="h-full" />
             </div>
 
             {/* Right Sidebar - What are you looking for */}
-            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 lg:mx-[6px] lg:pl-[35px] flex flex-col h-[195px] sm:h-[275px] md:h-[435px] lg:h-[calc(min(48vh,480px)-5px)] xl:h-[555px]">
-              <Card className="shadow-lg flex-1 flex flex-col">
-                <CardContent className="p-6 flex flex-col h-full">
-                  <h3 className="font-bold text-lg mb-4">What are you looking for?</h3>
-                  <p className="text-sm text-gray-600 mb-4">Explore Opportunities!</p>
+            <div className="lg:col-span-3 lg:translate-x-5 lg:-translate-y-2.5 h-[560px]">
+              <Card className="shadow-lg h-full flex flex-col overflow-hidden border-none rounded-xl">
+                <CardContent className="p-4 flex flex-col h-full overflow-hidden">
+                  <div className="shrink-0">
+                    <h3 className="font-bold text-base xl:text-lg mb-1 xl:mb-2 leading-tight">What are you looking for?</h3>
+                    <p className="text-[10px] xl:text-xs text-gray-500 mb-3 xl:mb-4">Explore Opportunities!</p>
 
-                  <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-3 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="distributor" id="distributor" />
-                      <Label htmlFor="distributor" className="cursor-pointer">Distributor</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="franchise" id="franchise" />
-                      <Label htmlFor="franchise" className="cursor-pointer">Franchise</Label>
-                    </div>
-                  </RadioGroup>
+                    <RadioGroup value={lookingFor} onValueChange={setLookingFor} className="space-y-1.5 xl:space-y-2.5 mb-4 xl:mb-5">
+                      <div className="flex items-center space-x-3">
+                        <RadioGroupItem value="franchise" id="franchise" className="w-4 h-4 xl:w-5 xl:h-5 text-[#FF6B2C]" />
+                        <Label htmlFor="franchise" className="cursor-pointer text-sm xl:text-base font-semibold">Dealers</Label>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <RadioGroupItem value="distributor" id="distributor" className="w-4 h-4 xl:w-5 xl:h-5 text-[#FF6B2C]" />
+                        <Label htmlFor="distributor" className="cursor-pointer text-sm xl:text-base font-semibold">Distributors</Label>
+                      </div>
+                    </RadioGroup>
 
-                  <Link to={lookingFor === 'franchise' ? '/franchises' : '/distributors'}>
-                    <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-4">
-                      {lookingFor === 'franchise' ? 'Looking for Franchises' : 'Looking for Distributors'}
-                    </Button>
-                  </Link>
-
-                  {/* Stats Card inserted into gap */}
-                  <div className="flex flex-col justify-center items-center flex-1 my-2">
-                    <p className="text-sm text-gray-600 mb-1 lg:mb-2">ALL CATEGORIES</p>
-                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2C3E95]">Total 1.2 Lakh</h2>
-                    <p className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900">Distributors</p>
-                    <div className="flex justify-center gap-1 mt-2 lg:mt-4">
-                      {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <div key={i} className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-full bg-gradient-to-br from-orange-400 to-orange-600" />
-                      ))}
-                    </div>
+                    <Link to={lookingFor === 'franchise' ? '/franchises' : '/distributors'}>
+                      <Button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1f] rounded-full mb-6 xl:mb-10 h-10 xl:h-12 text-sm xl:text-base font-bold uppercase tracking-wider shadow-md">
+                        {lookingFor === 'franchise' ? 'Find Dealers' : 'Find Distributors'}
+                      </Button>
+                    </Link>
                   </div>
 
-                  <div className="text-center mt-auto pt-4 border-t">
-                    <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
-                      <p className="text-sm font-semibold text-gray-900 mb-2">Supercharge Your Business Growth</p>
-                      <p className="text-xs text-gray-600">Unlock Limitless Opportunities!</p>
+                  {/* Stats Card inserted into gap */}
+                  <div className="flex flex-col justify-center items-center flex-1 py-1 xl:py-2 border-y border-gray-100 my-1 xl:my-2">
+                    <p className="text-[9px] xl:text-[10px] text-gray-400 font-bold tracking-widest uppercase mb-0.5">ALL CATEGORIES</p>
+                    <h2 className="text-base xl:text-2xl font-black text-[#2C3E95] leading-none mb-0.5">Total 1.2 Lakh</h2>
+                    <p className="text-[10px] xl:text-xs font-bold text-gray-600 uppercase tracking-tighter text-center">Distributors Appointed</p>
+
+                  </div>
+
+                  <div className="text-center mt-auto">
+                    <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-2 xl:p-3 mb-2 xl:mb-3">
+                      <p className="text-[10px] xl:text-sm font-black text-[#2C3E95] mb-0.5">Supercharge Your Growth</p>
+                      <p className="text-[9px] xl:text-[10px] text-gray-400">Unlock Unlimited Leads Today!</p>
                     </div>
                     <Link to="/post-requirement">
-                      <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full">
-                        Post Your Requirement
+                      <Button className="w-full bg-[#2C3E95] hover:bg-[#1f2d6b] rounded-full h-8 xl:h-10 text-[11px] xl:text-sm font-bold uppercase">
+                        Post Requirement
                       </Button>
                     </Link>
                   </div>

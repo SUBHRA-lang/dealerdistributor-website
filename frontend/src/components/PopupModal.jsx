@@ -123,14 +123,14 @@ const PopupModal = ({ onClose }) => {
             {/* ── Type toggle ── */}
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">I am interested in</p>
-              <div className="grid grid-cols-2 gap-2 p-1 bg-gray-100 rounded-2xl">
-                {['distributor', 'franchise'].map(type => (
+               <div className="grid grid-cols-2 gap-2 p-1 bg-gray-100 rounded-2xl">
+                {['franchise', 'distributor'].map(type => (
                   <button key={type} onClick={() => { cancelAutoClose(); setActiveType(type); }}
                     className={`py-2.5 rounded-xl text-sm font-semibold transition
                       ${activeType === type
                         ? 'bg-[#2C3E95] text-white shadow-md'
                         : 'text-gray-500 hover:text-gray-700'}`}>
-                    {type === 'distributor' ? 'Distributor' : 'Franchise'}
+                    {type === 'franchise' ? 'Dealers' : 'Distributors'}
                   </button>
                 ))}
               </div>
@@ -153,7 +153,7 @@ const PopupModal = ({ onClose }) => {
                       ${role === val ? 'border-[#2C3E95] bg-[#2C3E95]' : 'border-gray-300'}`}>
                       {role === val && <Check size={12} className="text-white" strokeWidth={3} />}
                     </span>
-                    <span className="text-sm font-medium text-gray-700">{icon} {label}</span>
+                    <span className="text-sm font-medium text-gray-700">{icon} {val === 'looking' ? `Looking for ${activeType === 'franchise' ? 'Dealers' : activeType}` : `Want to become ${activeType === 'franchise' ? 'Dealers' : activeType}`}</span>
                   </label>
                 ))}
               </div>

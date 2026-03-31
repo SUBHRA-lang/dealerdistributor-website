@@ -91,7 +91,7 @@ const PostRequirement = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Post Your Requirement</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Tell us what you're looking for and we'll connect you with the right distributors or franchisees
+            Tell us what you're looking for and we'll connect you with the right dealers or distributors
           </p>
         </div>
 
@@ -107,8 +107,8 @@ const PostRequirement = () => {
                       <SelectValue placeholder="Select business type" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="franchise">Dealers</SelectItem>
                       <SelectItem value="distributor">Distributor</SelectItem>
-                      <SelectItem value="franchise">Franchise</SelectItem>
                       <SelectItem value="sales-agent">Sales Agent</SelectItem>
                       <SelectItem value="super-stockist">Super Stockist</SelectItem>
                     </SelectContent>
@@ -290,7 +290,7 @@ const PostRequirement = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-[#2C3E95] text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
-                  <span>Matching distributors/franchisees will be notified</span>
+                  <span>Matching dealers/distributors will be notified</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-[#2C3E95] text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>

@@ -80,6 +80,10 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-orange-500 shrink-0" />
                 <span>7603009254</span>
               </li>
+              <div className="flex items-center gap-1.5">
+                <div className="w-1 h-3 bg-orange-500 rounded-full" />
+                <p className="text-sm text-gray-400 font-medium">India's #1 Platform for <span className="text-white">Dealers</span> & <span className="text-white">Distributors</span></p>
+              </div>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-orange-500 shrink-0" />
                 <span className="break-all">query@dealerdistributors.com</span>
@@ -102,8 +106,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 border-b-2 border-orange-500 pb-2 inline-block">Opportunities</h4>
             <ul className="space-y-3">
+              <li><Link to="/franchises" className="text-gray-300 hover:text-orange-500 transition-colors">Dealers</Link></li>
               <li><Link to="/distributors" className="text-gray-300 hover:text-orange-500 transition-colors">Distributorships</Link></li>
-              <li><Link to="/franchises" className="text-gray-300 hover:text-orange-500 transition-colors">Franchises</Link></li>
               <li><Link to="/request-callback" className="text-gray-300 hover:text-orange-500 transition-colors">Request Call Back</Link></li>
               <li><Link to="/post-requirement" className="text-gray-300 hover:text-orange-500 transition-colors">Post Requirement</Link></li>
             </ul>
@@ -123,7 +127,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-xs">
           <p className="max-w-3xl mx-auto leading-relaxed">
-            DealerDistributors.com - An ideal platform for anybody who is looking forward to Appointing or Becoming a Distributor, Franchisee and Sales Agent.
+            DealerDistributors.com - An ideal platform for anybody who is looking forward to Appointing or Becoming a Dealer, Distributor and Sales Agent.
           </p>
           <p className="mt-4 font-semibold uppercase tracking-widest text-gray-500">© 2025 DealerDistributors. All rights reserved.</p>
         </div>
