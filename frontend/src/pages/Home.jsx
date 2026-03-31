@@ -25,7 +25,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [distRes, testRes, blogRes] = await Promise.all([
-          distributorsAPI.getFeatured(),
+          distributorsAPI.getFeatured({ limit: 27 }),
           testimonialsAPI.getFeatured(),
           blogAPI.getPosts({ limit: 3 })
         ]);

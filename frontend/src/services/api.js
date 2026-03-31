@@ -12,7 +12,7 @@ export const categoriesAPI = {
 export const distributorsAPI = {
   getAll: (params) => axios.get(`${API}/distributors`, { params }),
   getById: (id) => axios.get(`${API}/distributors/${id}`),
-  getFeatured: () => axios.get(`${API}/distributors/featured`)
+  getFeatured: (params) => axios.get(`${API}/distributors/featured`, { params })
 };
 
 // Blog API
