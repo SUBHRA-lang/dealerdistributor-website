@@ -152,10 +152,13 @@ const Home = () => {
                 {/* Product image banner at top of card */}
                 <div className="w-full h-[160px] overflow-hidden bg-gray-100">
                   <img
-                    src={distributor.productImage}
+                    src={distributor.productImage || `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`}
                     alt={`${distributor.name} product`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.style.background = 'linear-gradient(135deg,#e0e7ff,#f0fdf4)'; }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`;
+                    }}
                   />
                 </div>
                 <CardContent className="p-6">
@@ -246,7 +249,10 @@ const Home = () => {
                       src={brand.logo}
                       alt={brand.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.style.background = brand.color + '22'; }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://placehold.co/100x100/${brand.color.replace('#', '')}/ffffff?text=${encodeURIComponent(brand.name.substring(0, 2).toUpperCase())}`;
+                      }}
                     />
                   </div>
                   <span

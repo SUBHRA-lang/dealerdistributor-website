@@ -37,7 +37,7 @@ const Header = () => {
     const queryParams = new URLSearchParams();
     if (searchTerm) queryParams.append('q', searchTerm);
     if (selectedCategory && selectedCategory !== 'all') queryParams.append('category', selectedCategory);
-    
+
     navigate(`/distributors?${queryParams.toString()}`);
     setMobileMenuOpen(false);
   };

@@ -232,7 +232,10 @@ const Distributors = () => {
                           src={categoryImages[cat.name] || `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format`}
                           alt={cat.name}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                          onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background='#e0e7ff'; }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://placehold.co/80x80/e0e7ff/2C3E95?text=${encodeURIComponent(cat.name.substring(0, 2).toUpperCase())}`;
+                          }}
                         />
                       </div>
                       <span className="text-xs font-semibold block leading-tight">{cat.name}</span>
@@ -346,10 +349,13 @@ const Distributors = () => {
                     {viewMode === 'grid' && distributor.productImage && (
                       <div className="w-full h-[150px] overflow-hidden bg-gray-100">
                         <img
-                          src={distributor.productImage}
+                          src={distributor.productImage || `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`}
                           alt={`${distributor.name} product`}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          onError={(e) => { e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg,#e0e7ff,#f0fdf4)'; }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`;
+                          }}
                         />
                       </div>
                     )}
