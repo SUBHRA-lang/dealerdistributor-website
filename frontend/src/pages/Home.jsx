@@ -58,6 +58,26 @@ const Home = () => {
     );
   }
 
+  const categoryFallbackImages = {
+    'Food & Beverage':                  'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=80&h=80&fit=crop&auto=format',
+    'FMCG':                             'https://images.unsplash.com/photo-1542838132-92c53300491e?w=80&h=80&fit=crop&auto=format',
+    'Health & Beauty':                  'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop&auto=format',
+    'Pharmaceuticals':                  'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=80&h=80&fit=crop&auto=format',
+    'Apparel & Fashion':                'https://images.unsplash.com/photo-1445205170230-053b83016050?w=80&h=80&fit=crop&auto=format',
+    'Chemicals':                        'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=80&h=80&fit=crop&auto=format',
+    'Home Supplies':                    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop&auto=format',
+    'Construction & Real Estate':       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format',
+    'Electronics & Electrical Supplies':'https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&auto=format',
+    'Agriculture':                      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=80&h=80&fit=crop&auto=format',
+    'Automobile':                       'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=80&h=80&fit=crop&auto=format',
+    'Packaging & Paper':                'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=80&h=80&fit=crop&auto=format',
+    'Hospital & Medical Supplies':      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&h=80&fit=crop&auto=format',
+    'Gifts & Crafts':                   'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=80&h=80&fit=crop&auto=format',
+    'Consumer Electronics':             'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=80&h=80&fit=crop&auto=format',
+    'Pipes, Tubes & Fittings':          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop&auto=format',
+    'Industrial Supplies':              'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&auto=format',
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -152,12 +172,12 @@ const Home = () => {
                 {/* Product image banner at top of card */}
                 <div className="w-full h-[160px] overflow-hidden bg-gray-100">
                   <img
-                    src={distributor.productImage || `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`}
+                    src={distributor.productImage || categoryFallbackImages[distributor.category] || `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`}
                     alt={`${distributor.name} product`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`;
+                      e.target.src = categoryFallbackImages[distributor.category] || `https://placehold.co/400x200/f8fafc/334155?text=${encodeURIComponent(distributor.category || 'Product')}`;
                     }}
                   />
                 </div>
